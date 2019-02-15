@@ -1,14 +1,14 @@
 package generators;
 
 public class AdressGenerator extends RandomGenerator{
- private static String[] countries = {"Belgium", "Brazil",
- "Canada", "China", "Czech Republic", "France",
- "India", "Italy", "Switzerland", "United States"};
+    private static String[] countries = {"Belgium", "Brazil",
+            "Canada", "China", "Czech Republic", "France",
+            "India", "Italy", "Switzerland", "United States"};
 
     public static String streetGenerator() {
-     String street = capitalize(generateRandomString(10));
-     Integer number = generateRandomNumber(1, 500);
-     return street + " " + number;
+        String street = capitalize(generateRandomString(10));
+        Integer number = generateRandomNumber(1, 500);
+        return street + " " + number;
     }
 
     public static String randomCountry(){
