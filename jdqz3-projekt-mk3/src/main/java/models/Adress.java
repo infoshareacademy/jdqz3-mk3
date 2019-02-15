@@ -1,8 +1,6 @@
 package models;
 
-import generators.AdressGenerator;
-
-import static generators.AdressGenerator.*;
+import static generators.AddressGenerator.*;
 
 public class Adress {
     private String streetAdres;

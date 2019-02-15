@@ -1,6 +1,6 @@
 package generators;
 
-public class AdressGenerator extends RandomGenerator{
+public class AddressGenerator extends RandomGenerator{
     private static String[] countries = {"Belgium", "Brazil",
             "Canada", "China", "Czech Republic", "France",
             "India", "Italy", "Switzerland", "United States"};
@@ -31,7 +31,4 @@ public class AdressGenerator extends RandomGenerator{
         return state;
     }
 
-    public static void main(String[] args) {
-        System.out.println(streetGenerator());
-    }
 }
