@@ -2,28 +2,27 @@ package models;
 
 import static generators.AddressGenerator.*;
 
-public class Adress {
-    private String streetAdres;
+public class Address {
+    private String streetAddress;
     private String city;
     private String country;
     private String state;
     private String postalCode;
 
-    public Adress(){
-        setStreetAdres(streetGenerator());
+    public Address(){
+        setStreetAddress(streetGenerator());
         setCity(cityGenerator());
         setCountry(randomCountry());
         setState(stateGenerator());
         setPostalCode(postalCodeGenerator());
     }
 
-
-    public String getStreetAdres() {
-        return streetAdres;
+    public String getStreetAddress() {
+        return streetAddress;
     }
 
-    public void setStreetAdres(String streetAdres) {
-        this.streetAdres = streetAdres;
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
     }
 
     public String getCity() {
@@ -60,8 +59,8 @@ public class Adress {
 
     @Override
     public String toString() {
-        return "Adress{" +
-                "streetAdres='" + streetAdres + '\'' +
+        return "Address{" +
+                "streetAddress='" + streetAddress + '\'' +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
                 ", state='" + state + '\'' +
@@ -70,7 +69,7 @@ public class Adress {
     }
 
     public static void main(String[] args) {
-        Adress adres1 = new Adress();
+        Address adres1 = new Address();
         System.out.println(adres1);
     }
 }

@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="iSA_samples" />
+        <module name="project" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="iSA_samples" target="1.5" />
+      <module name="project" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
