@@ -68,8 +68,4 @@ public class Address {
                 '}';
     }
 
-    public static void main(String[] args) {
-        Address adres1 = new Address();
-        System.out.println(adres1);
-    }
 }
