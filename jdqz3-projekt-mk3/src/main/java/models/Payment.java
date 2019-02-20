@@ -17,7 +17,13 @@ public class Payment {
         address.setCity("Bourcherville");
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public Address getAddress() {
+        return address;
+    }
 
     @Override
     public String toString() {
