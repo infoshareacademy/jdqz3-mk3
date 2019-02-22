@@ -2,6 +2,7 @@ package project;
 
 import models.Address;
 import models.Item;
+import models.Payment;
 import models.User;
 
 public class RandomApp {
@@ -14,5 +15,8 @@ public class RandomApp {
 
         User user1 = new User();
         System.out.println(user1);
+
+        Payment payment = new Payment();
+        System.out.println(payment);
     }
 }
