@@ -26,63 +26,8 @@ public class BagGenerator extends RandomGenerator {
         bagList.add(VintageLaptopBag);
         bagList.add(vintageBagWithLeatherBands);
 
-        Bag randomBag = bagList.get(generateRandomNumber(0, 7));
+        Bag randomBag = bagList.get(generateRandomNumber(0, (bagList.size()-1)));
 
         return randomBag;
     }
-
-    public static String categoryGenerator() {
-        Bag bag = generateRandomBag();
-        String category = bag.getCategory();
-        return category;
-    }
-
-    public static String collectionGenerator() {
-        Bag bag = generateRandomBag();
-        String collection = bag.getCollection();
-        return collection;
-    }
-
-    public static String nameGenerator() {
-        Bag bag = generateRandomBag();
-        String name = bag.getName();
-        return name;
-    }
-
-    public static boolean avaliableGenerator() {
-        Bag bag = generateRandomBag();
-        boolean avaliable = bag.getAvaliable();
-        return avaliable;
-    }
-
-    public static Integer priceGenerator() {
-        Bag bag = generateRandomBag();
-        Integer price = bag.getPrice();
-        return price;
-    }
-
-    public static Integer weightGenerator() {
-        Bag bag = generateRandomBag();
-        Integer weight = bag.getWeight();
-        return weight;
-    }
-
-    public static Integer heightGenerator() {
-        Bag bag = generateRandomBag();
-        Integer height = bag.getHeight();
-        return height;
-    }
-
-    public static Integer widthGenerator() {
-        Bag bag = generateRandomBag();
-        Integer width = bag.getWidth();
-        return width;
-    }
-
-    public static Integer lenghtGenerator() {
-        Bag bag = generateRandomBag();
-        Integer lenght = bag.getLenght();
-        return lenght;
-    }
-
 }
