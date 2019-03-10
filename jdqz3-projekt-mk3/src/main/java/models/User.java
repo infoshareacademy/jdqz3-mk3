@@ -25,6 +25,42 @@ public class User {
         this.password = UserGenerator.passwordGenerator();
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getBillingCompany() {
+        return billingCompany;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public Address getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public String getOrderNotes() {
+        return orderNotes;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     @Override
     public String toString() {
         return "First Name: " + firstName +"\n" +
