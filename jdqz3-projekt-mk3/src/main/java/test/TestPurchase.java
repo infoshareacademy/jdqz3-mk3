@@ -28,10 +28,10 @@ public class TestPurchase {
         this.user = new User();
     }
 
-    @After
-    public void close() {
-        mainPage.close();
-    }
+//    @After
+//    public void close() {
+//        mainPage.close();
+//    }
 
     @Category(PurchaseTests.class)
     @Test
@@ -72,5 +72,20 @@ public class TestPurchase {
         ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
 
         Assert.assertEquals("$78.00", review.isPriceInCartCorect());
+    }
+
+    @Test
+    public void register(){
+        mainPage.EnterRegistrationPage();
+        Register registerPage = new Register(driver);
+        registerPage.insertFirstName(user);
+        registerPage.insertLastName(user);
+        registerPage.insertCountry(address);
+        registerPage.insertState(address);
+        registerPage.insertEmail(user);
+        registerPage.insertPassword(user);
+        registerPage.insertRepeatedPassword(user);
+        registerPage.clickCreateAnAccButton();
+
     }
 }
