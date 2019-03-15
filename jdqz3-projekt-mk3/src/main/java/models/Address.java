@@ -67,5 +67,4 @@ public class Address {
                 ", postalCode='" + postalCode + '\'' +
                 '}';
     }
-
 }

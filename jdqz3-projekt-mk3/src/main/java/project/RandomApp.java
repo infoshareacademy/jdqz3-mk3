@@ -3,7 +3,6 @@ package project;
 import generators.BagGenerator;
 import models.Address;
 import models.Bag;
-import models.Item;
 import models.Payment;
 import models.User;
 
