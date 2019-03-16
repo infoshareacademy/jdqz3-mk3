@@ -46,7 +46,7 @@ public class Register extends BasePage {
         this.firstName.fillingField(user.getFirstName());
     }
     private void insertLastName(User user){
-        this.lastName.fillingField(user.getFirstName());
+        this.lastName.fillingField(user.getLastName());
     }
     private void insertCountry(Address address){
         this.country.chooseOption(address.getCountry());

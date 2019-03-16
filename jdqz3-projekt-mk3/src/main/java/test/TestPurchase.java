@@ -76,9 +76,17 @@ public class TestPurchase {
 
     @Test
     public void register(){
-        mainPage.EnterRegistrationPage();
+        mainPage.enterRegistrationPage();
         Register registerPage = new Register(driver);
         registerPage.fillInRegistrationForm(user, address);
         registerPage.clickCreateAnAccButton();
+    }
+
+    @Test
+    public void checkMessageWhenSignInWithoutCredentials() {
+        mainPage.enterSignInPage();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.clickSignInButton();
+        Assert.assertEquals("Login Failed. Username or Password is incorrect.", signInPage.isMessageForEmptyCredentialsCorrect());
     }
 }
