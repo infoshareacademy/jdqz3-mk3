@@ -46,7 +46,7 @@ public class MainPage extends BasePage {
         signInButton.click();
     }
 
-    public void EnterRegistrationPage(){
+    public void enterRegistrationPage(){
         chooseMyAccount();
         chooseRegisterButton();
     }

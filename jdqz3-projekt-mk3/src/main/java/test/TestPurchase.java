@@ -76,7 +76,7 @@ public class TestPurchase {
 
     @Test
     public void register(){
-        mainPage.EnterRegistrationPage();
+        mainPage.enterRegistrationPage();
         Register registerPage = new Register(driver);
         registerPage.fillInRegistrationForm(user, address);
         registerPage.clickCreateAnAccButton();
