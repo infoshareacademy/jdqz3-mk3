@@ -30,12 +30,12 @@ public class MainPage extends BasePage {
         this.handBagsCategoryTab.click();
     }
 
-    public void ChooseMyAccount(){
+    public void chooseMyAccount(){
         this.myAccountButton = new Button(driver, myAccountSelector);
         myAccountButton.safeClick();
     }
 
-    public void ChooseRegisterButton(){
+    public void chooseRegisterButton(){
         this.registerButton = new Button(driver, registerSelector);
         registerButton.clickWithJs();
 
@@ -47,12 +47,12 @@ public class MainPage extends BasePage {
     }
 
     public void EnterRegistrationPage(){
-        ChooseMyAccount();
-        ChooseRegisterButton();
+        chooseMyAccount();
+        chooseRegisterButton();
     }
 
     public void enterSignInPage(){
-        ChooseMyAccount();
+        chooseMyAccount();
         chooseSignInLink();
     }
 }
