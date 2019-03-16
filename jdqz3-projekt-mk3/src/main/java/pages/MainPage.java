@@ -15,6 +15,9 @@ public class MainPage extends BasePage {
     private By registerSelector = By.xpath("//div[contains(@class, 'header-top-left')]//a[text()='Register']");
     private Button registerButton;
 
+    private By signInSelector = By.xpath("//a[@id='registerLink' and contains(text(),'Sign in')]");
+    private Button signInButton;
+
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -38,8 +41,18 @@ public class MainPage extends BasePage {
 
     }
 
+    public void chooseSignInLink() {
+        this.signInButton = new Button(driver, signInSelector);
+        signInButton.click();
+    }
+
     public void EnterRegistrationPage(){
         ChooseMyAccount();
         ChooseRegisterButton();
+    }
+
+    public void enterSignInPage(){
+        ChooseMyAccount();
+        chooseSignInLink();
     }
 }
