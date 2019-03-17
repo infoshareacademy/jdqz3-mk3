@@ -22,7 +22,6 @@ public class TestPurchase {
     @Before
     public void startBrowser() {
         driver = new ChromeDriver();
-        //
         mainPage = new MainPage(driver);
         this.address = new Address();
         this.user = new User();

@@ -9,6 +9,15 @@ public class MainPage extends BasePage {
     private By handbagsSelector = By.xpath("//div[contains(@class, 'mainmenu')]//a[text()='Handbags']");
     private Button handBagsCategoryTab;
 
+    private By beachBagsSelector = By.cssSelector("div.mainmenu [href='/shop/category/beachbags.html/ref=c:50']");
+    private Button beachBags;
+
+    private By laptopBagsSelector = By.cssSelector("div.mainmenu [href='/shop/category/laptop-bags.html/ref=c:51']");
+    private Button laptopBags;
+
+    private By bagsSelector = By.cssSelector("div.mainmenu [href='/shop/category/bags.html/ref=c:51,52'");
+    private Button bags;
+
     private By myAccountSelector = By.cssSelector("li.click_menu");
     private Button myAccountButton;
 

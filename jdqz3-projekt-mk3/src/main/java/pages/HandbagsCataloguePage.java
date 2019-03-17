@@ -12,12 +12,14 @@ public class HandbagsCataloguePage extends BasePage {
     private Button addToCartButton;
     private Button shoppingCartButton;
     private Button checkoutButton;
-
+    public MainMenu menu;
 
     public HandbagsCataloguePage(WebDriver driver) {
         super(driver);
         this.addToCartButton = new Button(this.driver, this.chicVinategDeVillleBagSelector);
         this.shoppingCartButton = new Button(this.driver, this.shoppingCart);
+        this.menu = new MainMenu(driver);
+
     }
 
     public void addBagToCart() {
@@ -29,4 +31,6 @@ public class HandbagsCataloguePage extends BasePage {
         this.checkoutButton = new Button(this.driver, this.checkout);
         this.checkoutButton.clickWithJs();
     }
+
+
 }
