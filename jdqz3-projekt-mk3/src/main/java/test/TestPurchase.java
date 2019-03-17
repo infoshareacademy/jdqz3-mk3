@@ -1,10 +1,8 @@
 package test;
-
 import categories.CartTests;
 import categories.PurchaseTests;
 import models.Address;
 import models.User;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,13 +10,11 @@ import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
-
 public class TestPurchase {
     private WebDriver driver;
     private MainPage mainPage;
     private Address address;
     private User user;
-
     @Before
     public void startBrowser() {
         driver = new ChromeDriver();
@@ -27,12 +23,10 @@ public class TestPurchase {
         this.address = new Address();
         this.user = new User();
     }
-
-//    @After
+    //    @After
 //    public void close() {
 //        mainPage.close();
 //    }
-
     @Category(PurchaseTests.class)
     @Test
     public void purchaseBag() {
@@ -46,11 +40,9 @@ public class TestPurchase {
         checkoutPage.insertData(user, address);
         checkoutPage.submitOrder();
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
-
         Assert.assertEquals("Order completed", orderConfirmationPage.orderConfirmationLabel());
         Assert.assertTrue(orderConfirmationPage.orderConfirmationLabel().equals("Order completed"));
     }
-
     @Category(CartTests.class)
     @Test
     public void addToCart() {
@@ -59,10 +51,8 @@ public class TestPurchase {
         handbagsCataloguePage.addBagToCart();
         handbagsCataloguePage.proceedToCheckout();
         ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
-
         Assert.assertEquals("Chic vintage DeVille", review.isCartContentCorrect());
     }
-
     @Test
     public void priceInCart() {
         mainPage.chooseHandbagsCategory();
@@ -70,22 +60,30 @@ public class TestPurchase {
         handbagsCataloguePage.addBagToCart();
         handbagsCataloguePage.proceedToCheckout();
         ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
-
         Assert.assertEquals("$78.00", review.isPriceInCartCorect());
     }
-
     @Test
     public void register(){
         mainPage.EnterRegistrationPage();
         Register registerPage = new Register(driver);
-        registerPage.insertFirstName(user);
-        registerPage.insertLastName(user);
-        registerPage.insertCountry(address);
-        registerPage.insertState(address);
-        registerPage.insertEmail(user);
-        registerPage.insertPassword(user);
-        registerPage.insertRepeatedPassword(user);
+        registerPage.fillInRegistrationForm(user, address);
         registerPage.clickCreateAnAccButton();
-
+    }
+    @Test
+    public void purchaseWihRegistration(){
+        mainPage.chooseHandbagsCategory();
+        HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
+        handbagsCataloguePage.addBagToCart();
+        handbagsCataloguePage.proceedToCheckout();
+        ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
+        review.orderToCheckout();
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.logInOrRegisterButton();
+        CustomerLogOnPage customerLogOnPage = new CustomerLogOnPage(driver);
+        customerLogOnPage.createNewAccount();
+        mainPage.EnterRegistrationPage();
+        Register registerPage = new Register(driver);
+        registerPage.fillInRegistrationForm(user, address);
+        registerPage.clickCreateAnAccButton();
     }
 }

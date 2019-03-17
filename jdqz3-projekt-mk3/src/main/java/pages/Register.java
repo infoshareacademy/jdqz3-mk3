@@ -71,4 +71,15 @@ public class Register extends BasePage {
         this.createAnAccButton = new Button(driver, createAnAccSelector);
         createAnAccButton.click();
     }
+
+    public void fillInRegistrationForm(User user, Address address){
+        insertFirstName(user);
+        insertLastName(user);
+        insertCountry(address);
+        insertState(address);
+        insertEmail(user);
+        insertPassword(user);
+        insertRepeatedPassword(user);
+    }
+
 }
