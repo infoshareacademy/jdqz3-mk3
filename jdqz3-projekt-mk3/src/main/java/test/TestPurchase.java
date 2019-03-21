@@ -85,5 +85,8 @@ public class TestPurchase {
         Register registerPage = new Register(driver);
         registerPage.fillInRegistrationForm(user, address);
         registerPage.clickCreateAnAccButton();
+        AfterRegistrationPage afterRegistrationPage = new AfterRegistrationPage(driver);
+        afterRegistrationPage.getShoppingCardAmound();
+        Assert.assertEquals("Shopping cart (1)", afterRegistrationPage.getShoppingCardAmound());
     }
 }
