@@ -42,28 +42,25 @@ public class Register extends BasePage {
 
     }
 
-    public void insertFirstName(User user){
+    private void insertFirstName(User user){
         this.firstName.fillingField(user.getFirstName());
     }
-    public void insertLastName(User user){
-        this.lastName.fillingField(user.getFirstName());
+    private void insertLastName(User user){
+        this.lastName.fillingField(user.getLastName());
     }
-    public void insertCountry(Address address){
+    private void insertCountry(Address address){
         this.country.chooseOption(address.getCountry());
     }
-    public void insertState(Address address){
+    private void insertState(Address address){
         this.state.fillingField(address.getState());
     }
-
-    public void insertEmail(User user){
+    private void insertEmail(User user){
         this.emailAddress.fillingField(user.getEmail());
     }
-
-    public void insertPassword(User user){
+    private void insertPassword(User user){
         this.password.fillingField(user.getPassword());
     }
-
-    public void insertRepeatedPassword(User user){
+    private void insertRepeatedPassword(User user){
         this.repeatPassword.fillingField(user.getPassword());
     }
 
