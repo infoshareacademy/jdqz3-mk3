@@ -99,8 +99,8 @@ public class TestPurchase {
         review.orderToCheckout();
         CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.logInOrRegisterButton();
-        CustomerLogOnPage customerLogOnPage = new CustomerLogOnPage(driver);
-        customerLogOnPage.createNewAccount();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.createNewAccount();
         mainPage.enterRegistrationPage();
         Register registerPage = new Register(driver);
         registerPage.fillInRegistrationForm(user, address);
