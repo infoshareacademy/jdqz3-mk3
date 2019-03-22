@@ -3,6 +3,7 @@ package pages;
 import elements.Button;
 import elements.Label;
 import elements.TextInput;
+import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -39,5 +40,18 @@ public class SignInPage extends BasePage {
 
     public void createNewAccount(){
         this.newCustomerButton.click();
+    }
+
+    private void insertCustomerEmailAddress(User user){
+        this.customerEmailAddress.fillingField(user.getEmail());
+    }
+    private void insertCustomerPassword(User user){
+        this.signInPassword.fillingField(user.getPassword());
+    }
+    public void insertCustomerDataAndSignIn(User user){
+        insertCustomerEmailAddress(user);
+        insertCustomerPassword(user);
+        clickSignInButton();
+
     }
 }

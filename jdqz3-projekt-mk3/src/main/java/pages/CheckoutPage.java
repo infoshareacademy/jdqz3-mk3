@@ -19,6 +19,9 @@ public class CheckoutPage extends BasePage {
     private By emailAddress = By.cssSelector("[name='customer.emailAddress']");
     private By phoneNumber = By.cssSelector("[name='customer.billing.phone']");
     private By submitOrder = By.xpath("//button[@id='submitOrder']");
+    private By createAnAccountCheckBoxSelecotr = By.cssSelector("div.checkout-form-list.create-acc input[type='checkbox");
+    private By insertAPasswodSelector = By.cssSelector("div#cbox_info input.required");
+
     private Button logInOrRegisterButton;
     private TextInput firstNameText;
     private TextInput lastNameText;
@@ -31,6 +34,9 @@ public class CheckoutPage extends BasePage {
     private TextInput emailAddressText;
     private TextInput phoneNumberText;
     private Button submitOrderButton;
+    private Button createAnAccountCheckbox;
+    private TextInput insertAPassword;
+
     public CheckoutPage(WebDriver driver) {
         super(driver);
         this.firstNameText = new TextInput(driver, firstName);
@@ -43,6 +49,7 @@ public class CheckoutPage extends BasePage {
         this.postalCodeText = new TextInput(driver, postalCode);
         this.emailAddressText = new TextInput(driver, emailAddress);
         this.phoneNumberText= new TextInput(driver, phoneNumber);
+        this.createAnAccountCheckbox = new Button(driver, createAnAccountCheckBoxSelecotr);
     }
     public void insertData(User user, Address address) {
         this.firstNameText.fillingField(user.getFirstName());
@@ -63,5 +70,11 @@ public class CheckoutPage extends BasePage {
     public void logInOrRegisterButton(){
         this.logInOrRegisterButton = new Button(driver, logInOrRegister);
         this.logInOrRegisterButton.click();
+    }
+
+    public void checkCreateAnAccountCheckBox(User user){
+        this.createAnAccountCheckbox.click();
+        this.insertAPassword = new TextInput(driver, insertAPasswodSelector);
+        insertAPassword.fillingField(user.getPassword());
     }
 }

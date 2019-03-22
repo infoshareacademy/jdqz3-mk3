@@ -28,10 +28,10 @@ public class TestPurchase {
         this.user = new User();
     }
 
-    @After
-    public void close() {
-        mainPage.close();
-    }
+//    @After
+//    public void close() {
+//        mainPage.close();
+//    }
 
     @Category(PurchaseTests.class)
     @Test
@@ -80,6 +80,8 @@ public class TestPurchase {
         Register registerPage = new Register(driver);
         registerPage.fillInRegistrationForm(user, address);
         registerPage.clickCreateAnAccButton();
+        AfterRegistrationPage afterRegistrationPage = new AfterRegistrationPage(driver);
+        Assert.assertEquals(user.getFirstName(), afterRegistrationPage.getLoginFromNavBar());
     }
 
     @Test
@@ -109,4 +111,25 @@ public class TestPurchase {
         afterRegistrationPage.getShoppingCardAmound();
         Assert.assertEquals("Shopping cart (1)", afterRegistrationPage.getShoppingCardAmound());
     }
+    @Test
+    public void purchaseWithCreatingAnAccountCheckBox(){
+        mainPage.chooseHandbagsCategory();
+        HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
+        handbagsCataloguePage.addBagToCart();
+        handbagsCataloguePage.proceedToCheckout();
+        ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
+        review.orderToCheckout();
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.insertData(user, address);
+        checkoutPage.checkCreateAnAccountCheckBox(user);
+        checkoutPage.submitOrder();
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+        orderConfirmationPage.chooseSignInLink();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.insertCustomerDataAndSignIn(user);
+        AfterRegistrationPage afterRegistrationPage = new AfterRegistrationPage(driver);
+        Assert.assertEquals(user.getFirstName(), afterRegistrationPage.getLoginFromNavBar());
+
+    }
+
 }
