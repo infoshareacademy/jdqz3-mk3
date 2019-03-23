@@ -1,6 +1,8 @@
 package pages;
 
 import elements.Button;
+import elements.TextInput;
+import models.Bag;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -17,7 +19,6 @@ public class MainPage extends BasePage {
 
     private By signInSelector = By.xpath("//a[@id='registerLink' and contains(text(),'Sign in')]");
     private Button signInButton;
-
 
     public MainPage(WebDriver driver) {
         super(driver);

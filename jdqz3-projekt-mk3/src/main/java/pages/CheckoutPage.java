@@ -49,7 +49,7 @@ public class CheckoutPage extends BasePage {
         this.postalCodeText = new TextInput(driver, postalCode);
         this.emailAddressText = new TextInput(driver, emailAddress);
         this.phoneNumberText= new TextInput(driver, phoneNumber);
-        this.createAnAccountCheckbox = new Button(driver, createAnAccountCheckBoxSelecotr);
+
     }
     public void insertData(User user, Address address) {
         this.firstNameText.fillingField(user.getFirstName());
@@ -63,6 +63,16 @@ public class CheckoutPage extends BasePage {
         this.emailAddressText.fillingField(user.getEmail());
         this.phoneNumberText.fillingField(user.getPhoneNumber());
     }
+    public void InsertDataForRegisteredUser(User user, Address address) {
+        this.billingCompanyText.fillingField(user.getBillingCompany());
+        this.addressText.fillingField(address.getStreetAddress());
+        this.cityText.fillingField(address.getCity());
+        this.countrySelect.chooseOption(address.getCountry());
+        this.stateProvinceText.fillingField(address.getState());
+        this.postalCodeText.fillingField(address.getPostalCode());
+        this.phoneNumberText.fillingField(user.getPhoneNumber());
+    }
+
     public void submitOrder() {
         this.submitOrderButton = new Button(driver, submitOrder);
         this.submitOrderButton.clickWithJs();
@@ -73,6 +83,7 @@ public class CheckoutPage extends BasePage {
     }
 
     public void checkCreateAnAccountCheckBox(User user){
+        this.createAnAccountCheckbox = new Button(driver, createAnAccountCheckBoxSelecotr);
         this.createAnAccountCheckbox.click();
         this.insertAPassword = new TextInput(driver, insertAPasswodSelector);
         insertAPassword.fillingField(user.getPassword());
