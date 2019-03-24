@@ -18,6 +18,11 @@ public class MainPage extends BasePage {
     private By signInSelector = By.xpath("//a[@id='registerLink' and contains(text(),'Sign in')]");
     private Button signInButton;
 
+    private By welcomeSelector = By.cssSelector(".fa.fa-angle-down");
+    private Button welcome;
+
+    private By logOutSelector = By.xpath("//div[@id='customerAccount']//a[contains(text(),'Logout')]");
+    private Button logOutButton;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -54,5 +59,19 @@ public class MainPage extends BasePage {
     public void enterSignInPage(){
         chooseMyAccount();
         chooseSignInLink();
+    }
+
+    public void chooseWelcomeLink() {
+        this.welcome = new Button(driver, welcomeSelector);
+        welcome.clickWithJs();
+    }
+    public void chooseLogoutLink() {
+        this.logOutButton = new Button(driver, logOutSelector);
+        logOutButton.clickWithJs();
+    }
+
+    public void logout(){
+        chooseWelcomeLink();
+        chooseLogoutLink();
     }
 }
