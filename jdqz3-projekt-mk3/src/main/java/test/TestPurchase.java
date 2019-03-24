@@ -22,7 +22,6 @@ public class TestPurchase {
     @Before
     public void startBrowser() {
         driver = new ChromeDriver();
-        //
         mainPage = new MainPage(driver);
         this.address = new Address();
         this.user = new User();
@@ -82,13 +81,6 @@ public class TestPurchase {
         registerPage.clickCreateAnAccButton();
     }
 
-    @Test
-    public void checkMessageWhenSignInWithoutCredentials() {
-        mainPage.enterSignInPage();
-        SignInPage signInPage = new SignInPage(driver);
-        signInPage.clickSignInButton();
-        Assert.assertEquals("Login Failed. Username or Password is incorrect.", signInPage.isMessageForEmptyCredentialsCorrect());
-    }
     @Test
     public void purchaseWihRegistration(){
         mainPage.chooseHandbagsCategory();
