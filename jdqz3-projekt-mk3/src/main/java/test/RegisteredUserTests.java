@@ -56,15 +56,21 @@ public class RegisteredUserTests {
     @Test
     public void isPasswordChangedToTheSamePassword() {
         AccountPage accountPage = new AccountPage(driver);
-        accountPage.goTochangePasswordPage();
+        accountPage.goToChangePasswordPage();
         ChangePasswordPage changePasswordPage = new ChangePasswordPage(driver);
-        changePasswordPage.changePassword(user);
+        changePasswordPage.fillNewPasswordWithTheSameValues(user);
         Assert.assertNotEquals("Invalid password", changePasswordPage.readPasswordMessage());
     }
-//    @Test
-//    public void isEmptyPasswordAccepted() {
-//
-//    }
+
+    @Test
+    public void isEmptyPasswordNotAccepted() {
+        AccountPage accountPage = new AccountPage(driver);
+        accountPage.goToChangePasswordPage();
+        ChangePasswordPage changePasswordPage = new ChangePasswordPage(driver);
+        changePasswordPage.fillNewPasswordWithEmptyValues(user);
+        Assert.assertEquals("Please provide a new password", changePasswordPage.readEmptyPasswordMessage());
+    }
+
 //    @Test
 //    public void isPasswordChanged() {
 //

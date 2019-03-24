@@ -24,21 +24,29 @@ public class ChangePasswordPage extends BasePage {
     private Label passwordMessage;
     private By passwordMessageSelector = By.xpath("//div[@id='password.errors']");
 
+    private Label emptyPasswordMessage;
+    private By emptyPasswordMessageSelector = By.xpath("//div[@id='formError']");
+
     public ChangePasswordPage(WebDriver driver) {
         super(driver);
     }
 
-    public void fillPasswordChangeForm(User user) {
+    public void fillPasswordChangeFormWithTeSamePassword(User user) {
         this.currentPassword = new TextInput(driver, currentPasswordSelector);
-        String oldPassword = user.getPassword();
-        currentPassword.fillingField(oldPassword);
-
-        String newlyGeneratedPassword = user.getPassword();
+        currentPassword.fillingField(user.getPassword());
         this.newPassword = new TextInput(driver, newPasswordSelector);
-        newPassword.fillingField(newlyGeneratedPassword);
+        newPassword.fillingField(user.getPassword());
         this.repeatPassword = new TextInput(driver, repeatPasswordSelector);
-        repeatPassword.fillingField(newlyGeneratedPassword);
+        repeatPassword.fillingField(user.getPassword());
+    }
 
+    public void fillPasswordFormWithEmptyValues(User user) {
+        this.currentPassword = new TextInput(driver, currentPasswordSelector);
+        currentPassword.fillingField(user.getPassword());
+        this.newPassword = new TextInput(driver, newPasswordSelector);
+        newPassword.fillingField("");
+        this.repeatPassword = new TextInput(driver, repeatPasswordSelector);
+        repeatPassword.fillingField("");
     }
 
     public void confirmPasswordChange() {
@@ -46,9 +54,13 @@ public class ChangePasswordPage extends BasePage {
         changePassword.click();
     }
 
-    public void changePassword(User user) {
-        fillPasswordChangeForm(user);
+    public void fillNewPasswordWithTheSameValues(User user) {
+        fillPasswordChangeFormWithTeSamePassword(user);
         confirmPasswordChange();
+    }
+
+    public void fillNewPasswordWithEmptyValues(User user) {
+        fillPasswordFormWithEmptyValues(user);
     }
 
     public String readPasswordMessage() {
@@ -56,4 +68,8 @@ public class ChangePasswordPage extends BasePage {
         return passwordMessage.readLabel();
     }
 
+    public String readEmptyPasswordMessage() {
+        this.emptyPasswordMessage = new Label(driver, emptyPasswordMessageSelector);
+        return emptyPasswordMessage.readLabel();
+    }
 }
