@@ -13,12 +13,14 @@ public class SignInPage extends BasePage {
     private By signInButtonSelector = By.id("genericLogin-button");
     private By loginErrorMessageSelector = By.id("loginError");
     private By newCustomerButtonSelector = By.cssSelector("a.btn.btn-default.login-btn");
+    private By welcomeTextUserSelector = By.xpath("//div[@id='customerAccount']/ul/li/a/span");
 
     private TextInput customerEmailAddress;
     private TextInput signInPassword;
     private Button signInButton;
     private Label loginErrorMessage;
     private Button newCustomerButton;
+    private Label welcomeTextUser;
 
     public SignInPage(WebDriver driver) {
         super(driver);
@@ -49,6 +51,12 @@ public class SignInPage extends BasePage {
         this.loginErrorMessage = new Label(driver, loginErrorMessageSelector);
         String messageForEmptyCredentials = loginErrorMessage.readLabel();
         return messageForEmptyCredentials;
+    }
+
+    public String getRegisteredUserFirstName() {
+        this.welcomeTextUser = new Label(driver, welcomeTextUserSelector);
+        String registeredUserFirstName = welcomeTextUser.readLabel();
+        return registeredUserFirstName;
     }
 
     public void createNewAccount(){

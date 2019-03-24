@@ -3,6 +3,7 @@ package test;
 import models.Address;
 import models.User;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +21,6 @@ public class RegisteredUserTests {
     @Before
     public void startBrowser() {
         driver = new ChromeDriver();
-        //
         mainPage = new MainPage(driver);
         this.address = new Address();
         this.user = new User();
@@ -32,7 +32,7 @@ public class RegisteredUserTests {
 
     @After
     public void close() {
-        mainPage.close();
+//        mainPage.close();
     }
 
     @Test
@@ -41,6 +41,6 @@ public class RegisteredUserTests {
         mainPage.enterSignInPage();
         SignInPage signInPage = new SignInPage(driver);
         signInPage.loginAsRegisteredUser(user);
-        //Assert
+        Assert.assertEquals(user.getFirstName(), signInPage.getRegisteredUserFirstName());
     }
 }
