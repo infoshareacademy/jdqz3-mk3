@@ -32,7 +32,7 @@ public class RegisteredUserTests {
 
     @After
     public void close() {
-//        mainPage.close();
+        mainPage.close();
     }
 
     @Test
