@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.AccountPage;
 import pages.MainPage;
 import pages.Register;
 import pages.SignInPage;
@@ -32,15 +33,26 @@ public class RegisteredUserTests {
 
     @After
     public void close() {
-        mainPage.close();
+//        mainPage.close();
     }
 
     @Test
-    public void isRegisteredUserLogged() {
+    public void isRegisteredUserSignedIn() {
         mainPage.logout();
         mainPage.enterSignInPage();
         SignInPage signInPage = new SignInPage(driver);
         signInPage.loginAsRegisteredUser(user);
         Assert.assertEquals(user.getFirstName(), signInPage.getRegisteredUserFirstName());
+    }
+
+    @Test
+    public void isRegisteredUserLoggedOut() {
+        mainPage.logout();
+        mainPage.enterSignInPage();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.loginAsRegisteredUser(user);
+        AccountPage accountPage = new AccountPage(driver);
+        accountPage.logoutUser();
+        Assert.assertNotEquals(user.getFirstName(), mainPage.getMyAccountText());
     }
 }
