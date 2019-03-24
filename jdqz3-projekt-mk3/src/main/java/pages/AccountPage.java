@@ -16,7 +16,7 @@ public class AccountPage extends BasePage {
     private By changePasswordSelector = By.cssSelector("[href='/shop/customer/password.html']");
 
     private Button logout;
-    private By logoutSelector = By.cssSelector("ul.nav-list [href='/shop/customer/logout'");
+    private By logoutSelector = By.cssSelector("ul.nav-list [href='/shop/customer/logout']");
 
     private Button recentOrders;
     private By recentOrdersSelector = By.cssSelector("[href='/shop/customer/orders.html']");
@@ -24,6 +24,15 @@ public class AccountPage extends BasePage {
 
     public AccountPage(WebDriver driver){
         super(driver);
+    }
 
+    public void logoutUser() {
+        this.logout = new Button(driver, logoutSelector);
+        logout.click();
+    }
+
+    public void goToChangePasswordPage() {
+        this.changePassword = new Button(driver, changePasswordSelector);
+        changePassword.click();
     }
 }
