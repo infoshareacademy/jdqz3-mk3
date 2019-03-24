@@ -8,10 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.AccountPage;
-import pages.MainPage;
-import pages.Register;
-import pages.SignInPage;
+import pages.*;
 
 public class RegisteredUserTests {
     private WebDriver driver;
@@ -33,7 +30,7 @@ public class RegisteredUserTests {
 
     @After
     public void close() {
-//        mainPage.close();
+        mainPage.close();
     }
 
     @Test
@@ -55,4 +52,21 @@ public class RegisteredUserTests {
         accountPage.logoutUser();
         Assert.assertNotEquals(user.getFirstName(), mainPage.getMyAccountText());
     }
+
+    @Test
+    public void isPasswordChangedToTheSamePassword() {
+        AccountPage accountPage = new AccountPage(driver);
+        accountPage.goTochangePasswordPage();
+        ChangePasswordPage changePasswordPage = new ChangePasswordPage(driver);
+        changePasswordPage.changePassword(user);
+        Assert.assertNotEquals("Invalid password", changePasswordPage.readPasswordMessage());
+    }
+//    @Test
+//    public void isEmptyPasswordAccepted() {
+//
+//    }
+//    @Test
+//    public void isPasswordChanged() {
+//
+//    }
 }

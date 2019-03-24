@@ -30,4 +30,9 @@ public class AccountPage extends BasePage {
         this.logout = new Button(driver, logoutSelector);
         logout.click();
     }
+
+    public void goTochangePasswordPage() {
+        this.changePassword = new Button(driver, changePasswordSelector);
+        changePassword.click();
+    }
 }
