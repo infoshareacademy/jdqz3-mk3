@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.BasePage;
 import pages.HandbagsCataloguePage;
 import pages.MainPage;
 import pages.ReviewYourOrderPage;
@@ -41,6 +40,6 @@ public class CartUpdating {
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         reviewYourOrderPage.changeQuantity("2");
         reviewYourOrderPage.recalculateClick();
-        Assert.assertEquals("2", reviewYourOrderPage.readAmountInCart());
+        Assert.assertEquals("(2)", reviewYourOrderPage.readAmountInCart());
     }
 }
