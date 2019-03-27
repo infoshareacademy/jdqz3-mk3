@@ -15,6 +15,7 @@ public class RegisteredUserTests {
     private MainPage mainPage;
     private Address address;
     private User user;
+    private User user2;
 
     @Before
     public void startBrowser() {
@@ -22,6 +23,7 @@ public class RegisteredUserTests {
         mainPage = new MainPage(driver);
         this.address = new Address();
         this.user = new User();
+        this.user2 = new User();
         mainPage.enterRegistrationPage();
         Register registerPage = new Register(driver);
         registerPage.fillInRegistrationForm(user, address);
@@ -71,8 +73,12 @@ public class RegisteredUserTests {
         Assert.assertEquals("Please provide a new password", changePasswordPage.readEmptyPasswordMessage());
     }
 
-//    @Test
-//    public void isPasswordChanged() {
-//
-//    }
+    @Test
+    public void isPasswordChanged() {
+        AccountPage accountPage = new AccountPage(driver);
+        accountPage.goToChangePasswordPage();
+        ChangePasswordPage changePasswordPage = new ChangePasswordPage(driver);
+        changePasswordPage.fillNewPasswordWithValues(user, user2);
+        Assert.assertNotEquals("Invalid password", changePasswordPage.readPasswordMessage());
+    }
 }
