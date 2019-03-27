@@ -29,24 +29,47 @@ public class ChangePasswordPage extends BasePage {
 
     public ChangePasswordPage(WebDriver driver) {
         super(driver);
+        this.currentPassword = new TextInput(driver, currentPasswordSelector);
+        this.newPassword = new TextInput(driver, newPasswordSelector);
+        this.repeatPassword = new TextInput(driver, repeatPasswordSelector);
     }
 
-    public void fillPasswordChangeFormWithTeSamePassword(User user) {
-        this.currentPassword = new TextInput(driver, currentPasswordSelector);
+    public void fillCurrentPassword(User user) {
         currentPassword.fillingField(user.getPassword());
-        this.newPassword = new TextInput(driver, newPasswordSelector);
+    }
+
+    public void fillNewPassword(User user) {
         newPassword.fillingField(user.getPassword());
-        this.repeatPassword = new TextInput(driver, repeatPasswordSelector);
+    }
+
+    public void fillRepeatPassword(User user) {
         repeatPassword.fillingField(user.getPassword());
     }
 
-    public void fillPasswordFormWithEmptyValues(User user) {
-        this.currentPassword = new TextInput(driver, currentPasswordSelector);
-        currentPassword.fillingField(user.getPassword());
-        this.newPassword = new TextInput(driver, newPasswordSelector);
+    public void newPasswordWithEmptyValue(User user) {
         newPassword.fillingField("");
-        this.repeatPassword = new TextInput(driver, repeatPasswordSelector);
+    }
+
+    public void repeatPasswordWithEmptyValue(User user) {
         repeatPassword.fillingField("");
+    }
+
+    public void fillPasswordFormWithTeSamePassword(User user) {
+        fillCurrentPassword(user);
+        fillNewPassword(user);
+        fillRepeatPassword(user);
+    }
+
+    public void fillPasswordFormWithEmptyValues(User user) {
+        fillCurrentPassword(user);
+        newPasswordWithEmptyValue(user);
+        repeatPasswordWithEmptyValue(user);
+    }
+
+    public void fillPasswordForm(User user, User user2) {
+        fillCurrentPassword(user);
+        fillNewPassword(user2);
+        fillRepeatPassword(user2);
     }
 
     public void confirmPasswordChange() {
@@ -55,12 +78,17 @@ public class ChangePasswordPage extends BasePage {
     }
 
     public void fillNewPasswordWithTheSameValues(User user) {
-        fillPasswordChangeFormWithTeSamePassword(user);
+        fillPasswordFormWithTeSamePassword(user);
         confirmPasswordChange();
     }
 
     public void fillNewPasswordWithEmptyValues(User user) {
         fillPasswordFormWithEmptyValues(user);
+    }
+
+    public void fillNewPasswordWithValues(User user, User user2) {
+        fillPasswordForm(user, user2);
+        confirmPasswordChange();
     }
 
     public String readPasswordMessage() {
