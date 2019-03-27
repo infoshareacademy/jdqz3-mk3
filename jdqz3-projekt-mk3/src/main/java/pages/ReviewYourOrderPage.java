@@ -32,7 +32,7 @@ public class ReviewYourOrderPage extends BasePage{
         this.bagNameLabel = new Label(driver, bagName);
         this.bagPriceLabel = new Label(driver, bagPrice);
         this.deleteItemButton = new Button(driver, deleteItem);
-        this.amountInCartLabel = new Label(driver, amountInCart);
+        //this.amountInCartLabel = new Label(driver, amountInCart);
         this.quantityInput = new TextInput(driver, quantity);
         this.recalculateButtom = new Button(driver,recalculate);
     }
@@ -55,6 +55,7 @@ public class ReviewYourOrderPage extends BasePage{
     }
 
     public String readAmountInCart() {
+        this.amountInCartLabel = new Label(driver, amountInCart);
         String amountInCart = amountInCartLabel.readLabel();
         return amountInCart;
     }

@@ -16,7 +16,7 @@ public class BasePage {
         if (this.window == null) {
             window = this.driver.getWindowHandle();
         }
-        //this.driver.manage().window().maximize();
+        this.driver.manage().window().maximize();
         waitForPage();
     }
 
