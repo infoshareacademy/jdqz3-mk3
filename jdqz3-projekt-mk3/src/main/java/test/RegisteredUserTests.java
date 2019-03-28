@@ -81,4 +81,14 @@ public class RegisteredUserTests {
         changePasswordPage.fillNewPasswordWithValues(user, user2);
         Assert.assertNotEquals("Invalid password", changePasswordPage.readPasswordMessage());
     }
+
+    @Test
+    public void isShippingAddressAdded() {
+        AccountPage accountPage = new AccountPage(driver);
+        accountPage.goToBillingAndShippingInformation();
+        accountPage.clickAddANewAddress();
+        BillingShippingPage billingShippingPage = new BillingShippingPage(driver);
+        billingShippingPage.fillShippingAddress(user, address);
+        Assert.assertEquals("Request completed with success", billingShippingPage.successMessage());
+    }
 }

@@ -22,6 +22,9 @@ public class AccountPage extends BasePage {
     private By recentOrdersSelector = By.cssSelector("[href='/shop/customer/orders.html']");
 
 
+    private Button shippingAddress;
+    private By shippingAdddressSelector = By.xpath("//a[contains(text(),'Add a new address')]");
+
     public AccountPage(WebDriver driver){
         super(driver);
     }
@@ -34,5 +37,15 @@ public class AccountPage extends BasePage {
     public void goToChangePasswordPage() {
         this.changePassword = new Button(driver, changePasswordSelector);
         changePassword.click();
+    }
+
+    public void goToBillingAndShippingInformation() {
+        this.billingShippingInformation = new Button(driver, billingShippingInformationSelector);
+        billingShippingInformation.click();
+    }
+
+    public void clickAddANewAddress() {
+        this.shippingAddress = new Button(driver, shippingAdddressSelector);
+        shippingAddress.click();
     }
 }
