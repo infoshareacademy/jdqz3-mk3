@@ -27,6 +27,9 @@ public class MainPage extends BasePage {
     private By signInSelector = By.xpath("//a[@id='registerLink' and contains(text(),'Sign in')]");
     private Button signInButton;
 
+    private By contactUsSelector = By.cssSelector("div.footer-wrapper [href='/shop/store/contactus.html'");
+    private Button contactUsButton;
+
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -63,5 +66,10 @@ public class MainPage extends BasePage {
     public void enterSignInPage(){
         chooseMyAccount();
         chooseSignInLink();
+    }
+
+    public void chooseContactUs(){
+        this.contactUsButton = new Button(driver, contactUsSelector);
+        contactUsButton.click();
     }
 }

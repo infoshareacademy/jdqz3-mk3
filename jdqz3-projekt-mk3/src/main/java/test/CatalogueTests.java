@@ -33,6 +33,14 @@ public class CatalogueTests{
         mainPage.chooseHandbagsCategory();
         HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
         Assert.assertTrue(handbagsCataloguePage.menu.isHandbagpresent());
+        Assert.assertTrue(handbagsCataloguePage.menu.isBeachBagsPresent());
+        Assert.assertTrue(handbagsCataloguePage.menu.isLaptopBagsPresent());
+        Assert.assertTrue(handbagsCataloguePage.menu.isBagsPresent());
+    }
+
+    @Test
+    public void contactUsCatalogue(){
+        mainPage.chooseContactUs();
 
     }
 
