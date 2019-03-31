@@ -14,7 +14,7 @@ public class Label {
     public Label(WebDriver driver, By by) {
         this.driver = driver;
         WebDriverWait wait = new WebDriverWait(this.driver, timeout);
-        element = wait.until(ExpectedConditions.presenceOfElementLocated((by)));
+        element = wait.until(ExpectedConditions.visibilityOfElementLocated((by)));
     }
 
     public String readLabel() {

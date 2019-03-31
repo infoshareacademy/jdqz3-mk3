@@ -32,7 +32,7 @@ public class ReviewYourOrderPage extends BasePage{
         this.bagNameLabel = new Label(driver, bagName);
         this.bagPriceLabel = new Label(driver, bagPrice);
         this.deleteItemButton = new Button(driver, deleteItem);
-        //this.amountInCartLabel = new Label(driver, amountInCart);
+        this.amountInCartLabel = new Label(driver, amountInCart);
         this.quantityInput = new TextInput(driver, quantity);
         this.recalculateButtom = new Button(driver,recalculate);
     }
@@ -66,7 +66,10 @@ public class ReviewYourOrderPage extends BasePage{
     }
 
     public void recalculateClick(){
+        //w koszyku stara liczba itemow (obiekt utworzony w konstruktorze)
         this.recalculateButtom.clickWithJs();
+        //TODO przez 20 sekund sprawdzaj czy wartość zmieniła się z (1)
+        
     }
 
 

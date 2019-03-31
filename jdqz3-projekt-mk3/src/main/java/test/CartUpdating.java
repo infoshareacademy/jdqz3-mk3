@@ -1,6 +1,7 @@
 package test;
 
 import generators.RandomGenerator;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,6 +20,10 @@ public class CartUpdating {
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
     }
+    @After
+    public void close() {
+        mainPage.close();
+    }
 
     @Test
     public void deleteFromCart(){
@@ -28,7 +33,7 @@ public class CartUpdating {
         handbagsCataloguePage.proceedToCheckout();
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         reviewYourOrderPage.clickDeleteFromCart();
-        //TODO add assertion after fixing the bug
+        Assert.assertEquals("http://demo.shopizer.com:8080/shop/", driver.getCurrentUrl());
     }
 
     @Test
@@ -40,6 +45,7 @@ public class CartUpdating {
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         reviewYourOrderPage.changeQuantity("2");
         reviewYourOrderPage.recalculateClick();
+        //TODO dodac asercje polegającą na czekaniu, że wartośc zmieni się z 1 (nowa metoda)
         Assert.assertEquals("(2)", reviewYourOrderPage.readAmountInCart());
     }
 }
