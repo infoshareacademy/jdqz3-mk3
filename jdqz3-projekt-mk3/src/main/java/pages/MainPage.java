@@ -54,7 +54,6 @@ public class MainPage extends BasePage {
         this.signInButton = new Button(driver, signInSelector);
         signInButton.click();
     }
-
     public void enterRegistrationPage(){
         chooseMyAccount();
         chooseRegisterButton();

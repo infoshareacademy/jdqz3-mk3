@@ -18,7 +18,7 @@ public class HandbagsCataloguePage extends BasePage {
         super(driver);
         this.addToCartButton = new Button(this.driver, this.chicVinategDeVillleBagSelector);
         this.shoppingCartButton = new Button(this.driver, this.shoppingCart);
-        this.menu = new MainMenu(driver);
+
 
     }
 
