@@ -82,10 +82,23 @@ public class TestPurchase {
     }
 
     @Test
-    public void checkMessageWhenSignInWithoutCredentials() {
-        mainPage.enterSignInPage();
+    public void purchaseWihRegistration(){
+        mainPage.chooseHandbagsCategory();
+        HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
+        handbagsCataloguePage.addBagToCart();
+        handbagsCataloguePage.proceedToCheckout();
+        ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
+        review.orderToCheckout();
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.logInOrRegisterButton();
         SignInPage signInPage = new SignInPage(driver);
-        signInPage.clickSignInButton();
-        Assert.assertEquals("Login Failed. Username or Password is incorrect.", signInPage.isMessageForEmptyCredentialsCorrect());
+        signInPage.createNewAccount();
+        mainPage.enterRegistrationPage();
+        Register registerPage = new Register(driver);
+        registerPage.fillInRegistrationForm(user, address);
+        registerPage.clickCreateAnAccButton();
+        AfterRegistrationPage afterRegistrationPage = new AfterRegistrationPage(driver);
+        afterRegistrationPage.getShoppingCardAmound();
+        Assert.assertEquals("Shopping cart (1)", afterRegistrationPage.getShoppingCardAmound());
     }
 }

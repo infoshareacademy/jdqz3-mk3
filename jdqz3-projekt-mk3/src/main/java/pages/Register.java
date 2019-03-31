@@ -64,18 +64,19 @@ public class Register extends BasePage {
         this.repeatPassword.fillingField(user.getPassword());
     }
 
+    public void clickCreateAnAccButton(){
+        this.createAnAccButton = new Button(driver, createAnAccSelector);
+        createAnAccButton.click();
+    }
+
     public void fillInRegistrationForm(User user, Address address){
         insertFirstName(user);
         insertLastName(user);
-        insertState(address);
         insertCountry(address);
+        insertState(address);
         insertEmail(user);
         insertPassword(user);
         insertRepeatedPassword(user);
     }
 
-    public void clickCreateAnAccButton(){
-        this.createAnAccButton = new Button(driver, createAnAccSelector);
-        createAnAccButton.click();
-    }
 }
