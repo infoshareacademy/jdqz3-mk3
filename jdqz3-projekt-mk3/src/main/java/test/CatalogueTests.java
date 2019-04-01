@@ -45,7 +45,7 @@ public class CatalogueTests{
 
     @Test
     public void contactUsCatalogue(){
-        mainPage.chooseContactUs();
+//        mainPage.chooseContactUs();
         ContactUsPage contactUsPage = new ContactUsPage(driver);
         contactUsPage.fillInContactForm(user);
         contactUsPage.insertSubject();
