@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Objects;
+
 public class ReviewYourOrderPage extends BasePage{
     private By proceedToCheckout = By.xpath("//a[contains(text(), 'Proceed to checkout')]");
     private Button proceedToCheckoutButton;
@@ -66,10 +68,12 @@ public class ReviewYourOrderPage extends BasePage{
     }
 
     public void recalculateClick(){
-        //w koszyku stara liczba itemow (obiekt utworzony w konstruktorze)
         this.recalculateButtom.clickWithJs();
-        //TODO przez 20 sekund sprawdzaj czy wartość zmieniła się z (1)
-        
+        for (int i = 100; i>0; i--){
+            if (Objects.equals("(1)", this.amountInCartLabel = new Label(driver, amountInCart))){
+                System.out.println("waiting");
+            }
+        }
     }
 
 

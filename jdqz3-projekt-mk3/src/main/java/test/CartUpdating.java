@@ -37,6 +37,15 @@ public class CartUpdating {
     }
 
     @Test
+    public void deleteFromCartCataloguePage(){
+        mainPage.chooseHandbagsCategory();
+        HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
+        handbagsCataloguePage.addBagToCart();
+        handbagsCataloguePage.clickDeleteButton();
+        Assert.assertEquals("Shopping cart (0)", handbagsCataloguePage.readAmountInCart());
+    }
+
+    @Test
     public void changeAmount(){
         mainPage.chooseHandbagsCategory();
         HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
@@ -45,7 +54,6 @@ public class CartUpdating {
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         reviewYourOrderPage.changeQuantity("2");
         reviewYourOrderPage.recalculateClick();
-        //TODO dodac asercje polegającą na czekaniu, że wartośc zmieni się z 1 (nowa metoda)
         Assert.assertEquals("(2)", reviewYourOrderPage.readAmountInCart());
     }
 }
