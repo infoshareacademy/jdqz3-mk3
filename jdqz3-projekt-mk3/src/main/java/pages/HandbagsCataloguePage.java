@@ -12,7 +12,6 @@ public class HandbagsCataloguePage extends BasePage {
     private Button addToCartButton;
     private Button shoppingCartButton;
     private Button checkoutButton;
-    public MainMenu menu;
 
     public HandbagsCataloguePage(WebDriver driver) {
         super(driver);

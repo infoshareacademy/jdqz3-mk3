@@ -1,6 +1,7 @@
 package pages;
 
 import elements.Button;
+import elements.Label;
 import elements.TextInput;
 import generators.RandomGenerator;
 import models.User;
@@ -21,11 +22,15 @@ public class ContactUsPage extends BasePage {
     private By commentsSelector = By.cssSelector("#comment");
     private TextInput comments;
 
-    private By captchaSelector = By.cssSelector(".recaptcha-checkbox-checkmark");
+//    private By captchaSelector = By.cssSelector("div.rc-anchor-center-item.rc-anchor-checkbox-holder span");
+    private By captchaSelector = By.cssSelector("div.rc-anchor-center-container");
     private Button captcha;
 
     private By sendSelector = By.cssSelector("#submitContact");
     private Button send;
+
+    private By messageSelector = By.cssSelector(".alert-success");
+    private Label message;
 
     public ContactUsPage(WebDriver driver) {
 
@@ -56,7 +61,7 @@ public class ContactUsPage extends BasePage {
     }
 
     public void insertComments(){
-        this.subject.fillingField("ddd");
+        this.comments.fillingField("ddd");
     }
 
     public void clickCaptcha(){
@@ -67,6 +72,12 @@ public class ContactUsPage extends BasePage {
     public void clickSend(){
         this.send = new Button(driver,sendSelector);
         send.click();
+    }
+
+    public String isCorectMessage() {
+        this.message = new Label(driver,messageSelector);
+        String messageForCorrectAnswer = message.readLabel();
+        return messageForCorrectAnswer;
     }
 
 }

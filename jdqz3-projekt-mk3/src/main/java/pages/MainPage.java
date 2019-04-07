@@ -28,11 +28,18 @@ public class MainPage extends BasePage {
     private By myAccountLinkSelector = By.xpath("//div[@id='customerAccount']/ul/li/a");
     private Label myAccountLink;
 
+    private By contactUsSelector = By.cssSelector("[href='/shop/store/contactus.html']");
+    private Button contactUs;
+
+    public MainMenu menu;
+
     public MainPage(WebDriver driver) {
         super(driver);
         this.url = "http://demo.shopizer.com:8080/shop/";
         this.driver.get(this.url);
         this.handBagsCategoryTab = new Button(this.driver, this.handbagsSelector);
+        this.contactUs = new Button(this.driver, this.contactUsSelector);
+        this.menu = new MainMenu(driver);
     }
 
     public void chooseHandbagsCategory(){
@@ -81,5 +88,9 @@ public class MainPage extends BasePage {
     public String getMyAccountText() {
         this.myAccountLink = new Label(driver, myAccountLinkSelector);
         return myAccountLink.readLabel();
+    }
+
+    public void chooseContactUs() {
+        contactUs.click();
     }
 }

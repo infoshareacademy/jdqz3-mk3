@@ -34,13 +34,11 @@ public class CatalogueTests{
 
     @Test
     public void chooseAllCatalogue() {
-//        mainPage
-//        mainPage.chooseHandbagsCategory();
-        HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
-        Assert.assertTrue(handbagsCataloguePage.menu.isHandbagpresent());
-        Assert.assertTrue(handbagsCataloguePage.menu.isBeachBagsPresent());
-        Assert.assertTrue(handbagsCataloguePage.menu.isLaptopBagsPresent());
-        Assert.assertTrue(handbagsCataloguePage.menu.isBagsPresent());
+
+        Assert.assertTrue(mainPage.menu.isHandbagpresent());
+        Assert.assertTrue(mainPage.menu.isBeachBagsPresent());
+        Assert.assertTrue(mainPage.menu.isLaptopBagsPresent());
+        Assert.assertTrue(mainPage.menu.isBagsPresent());
     }
 
     @Test
@@ -52,6 +50,7 @@ public class CatalogueTests{
         contactUsPage.insertComments();
         contactUsPage.clickCaptcha();
         contactUsPage.clickSend();
+        Assert.assertEquals("Your message has been sent", contactUsPage.isCorectMessage());
 
     }
 
