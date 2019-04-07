@@ -1,9 +1,11 @@
 package test;
 
-import generators.RandomGenerator;
+import categories.CartCategory;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HandbagsCataloguePage;
@@ -20,6 +22,12 @@ public class CartUpdating {
         mainPage = new MainPage(driver);
     }
 
+    @After
+    public void close() {
+        mainPage.close();
+    }
+
+    @Category(CartCategory.class)
     @Test
     public void deleteFromCart(){
         mainPage.chooseHandbagsCategory();
@@ -31,6 +39,7 @@ public class CartUpdating {
         //TODO add assertion after fixing the bug
     }
 
+    @Category(CartCategory.class)
     @Test
     public void changeAmount(){
         mainPage.chooseHandbagsCategory();

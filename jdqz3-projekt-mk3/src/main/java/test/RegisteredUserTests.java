@@ -1,11 +1,13 @@
 package test;
 
+import categories.UserCategory;
 import models.Address;
 import models.User;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
@@ -35,6 +37,7 @@ public class RegisteredUserTests {
         mainPage.close();
     }
 
+    @Category(UserCategory.class)
     @Test
     public void isRegisteredUserSignedIn() {
         mainPage.logout();
@@ -44,6 +47,7 @@ public class RegisteredUserTests {
         Assert.assertEquals(user.getFirstName(), signInPage.getRegisteredUserFirstName());
     }
 
+    @Category(UserCategory.class)
     @Test
     public void isRegisteredUserLoggedOut() {
         mainPage.logout();
@@ -55,6 +59,7 @@ public class RegisteredUserTests {
         Assert.assertNotEquals(user.getFirstName(), mainPage.getMyAccountText());
     }
 
+    @Category(UserCategory.class)
     @Test
     public void isPasswordChangedToTheSamePassword() {
         AccountPage accountPage = new AccountPage(driver);
@@ -64,6 +69,7 @@ public class RegisteredUserTests {
         Assert.assertNotEquals("Invalid password", changePasswordPage.readPasswordMessage());
     }
 
+    @Category(UserCategory.class)
     @Test
     public void isEmptyPasswordNotAccepted() {
         AccountPage accountPage = new AccountPage(driver);
@@ -73,6 +79,7 @@ public class RegisteredUserTests {
         Assert.assertEquals("Please provide a new password", changePasswordPage.readEmptyPasswordMessage());
     }
 
+    @Category(UserCategory.class)
     @Test
     public void isPasswordChanged() {
         AccountPage accountPage = new AccountPage(driver);
@@ -82,6 +89,7 @@ public class RegisteredUserTests {
         Assert.assertNotEquals("Invalid password", changePasswordPage.readPasswordMessage());
     }
 
+    @Category(UserCategory.class)
     @Test
     public void isShippingAddressAdded() {
         AccountPage accountPage = new AccountPage(driver);

@@ -1,11 +1,13 @@
 package test;
 
+import categories.UserCategory;
 import models.Address;
 import models.User;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.MainPage;
@@ -31,6 +33,7 @@ public class NotRegisteredUserTests {
         mainPage.close();
     }
 
+    @Category(UserCategory.class)
     @Test
     public void checkMessageWhenSignInWithoutCredentials() {
         mainPage.enterSignInPage();

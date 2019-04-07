@@ -1,10 +1,12 @@
 package test;
 
+import categories.CatalogueCategory;
 import models.User;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.ContactUsPage;
@@ -31,7 +33,7 @@ public class CatalogueTests{
         mainPage.close();
     }
 
-
+    @Category(CatalogueCategory.class)
     @Test
     public void chooseAllCatalogue() {
 //        mainPage
@@ -43,6 +45,7 @@ public class CatalogueTests{
         Assert.assertTrue(handbagsCataloguePage.menu.isBagsPresent());
     }
 
+    @Category(CatalogueCategory.class)
     @Test
     public void contactUsCatalogue(){
 //        mainPage.chooseContactUs();

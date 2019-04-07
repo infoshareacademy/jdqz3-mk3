@@ -1,7 +1,8 @@
 package test;
 
-import categories.CartTests;
-import categories.PurchaseTests;
+import categories.CartCategory;
+import categories.PurchaseCategory;
+import categories.UserCategory;
 import models.Address;
 import models.User;
 import org.junit.After;
@@ -32,7 +33,7 @@ public class TestPurchase {
         mainPage.close();
     }
 
-    @Category(PurchaseTests.class)
+    @Category(PurchaseCategory.class)
     @Test
     public void purchaseBag() {
         mainPage.chooseHandbagsCategory();
@@ -50,7 +51,7 @@ public class TestPurchase {
         Assert.assertTrue(orderConfirmationPage.orderConfirmationLabel().equals("Order completed"));
     }
 
-    @Category(CartTests.class)
+    @Category(CartCategory.class)
     @Test
     public void addToCart() {
         mainPage.chooseHandbagsCategory();
@@ -62,6 +63,7 @@ public class TestPurchase {
         Assert.assertEquals("Chic vintage DeVille", review.isCartContentCorrect());
     }
 
+    @Category(PurchaseCategory.class)
     @Test
     public void priceInCart() {
         mainPage.chooseHandbagsCategory();
@@ -73,6 +75,7 @@ public class TestPurchase {
         Assert.assertEquals("$78.00", review.isPriceInCartCorect());
     }
 
+    @Category(UserCategory.class)
     @Test
     public void register(){
         mainPage.enterRegistrationPage();
@@ -81,6 +84,7 @@ public class TestPurchase {
         registerPage.clickCreateAnAccButton();
     }
 
+    @Category(PurchaseCategory.class)
     @Test
     public void purchaseWihRegistration(){
         mainPage.chooseHandbagsCategory();
