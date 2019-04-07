@@ -1,11 +1,9 @@
 package test;
 
-import categories.CartCategory;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.HandbagsCataloguePage;
@@ -21,13 +19,11 @@ public class CartUpdating {
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
     }
-
     @After
     public void close() {
         mainPage.close();
     }
 
-    @Category(CartCategory.class)
     @Test
     public void deleteFromCart(){
         mainPage.chooseHandbagsCategory();
@@ -36,10 +32,18 @@ public class CartUpdating {
         handbagsCataloguePage.proceedToCheckout();
         ReviewYourOrderPage reviewYourOrderPage = new ReviewYourOrderPage(driver);
         reviewYourOrderPage.clickDeleteFromCart();
-        //TODO add assertion after fixing the bug
+        Assert.assertEquals("http://demo.shopizer.com:8080/shop/", driver.getCurrentUrl());
     }
 
-    @Category(CartCategory.class)
+    @Test
+    public void deleteFromCartCataloguePage(){
+        mainPage.chooseHandbagsCategory();
+        HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
+        handbagsCataloguePage.addBagToCart();
+        handbagsCataloguePage.clickDeleteButton();
+        Assert.assertEquals("Shopping cart (0)", handbagsCataloguePage.readAmountInCart());
+    }
+
     @Test
     public void changeAmount(){
         mainPage.chooseHandbagsCategory();

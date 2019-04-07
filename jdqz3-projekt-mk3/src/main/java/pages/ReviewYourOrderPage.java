@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Objects;
+
 public class ReviewYourOrderPage extends BasePage{
     private By proceedToCheckout = By.xpath("//a[contains(text(), 'Proceed to checkout')]");
     private Button proceedToCheckoutButton;
@@ -32,7 +34,7 @@ public class ReviewYourOrderPage extends BasePage{
         this.bagNameLabel = new Label(driver, bagName);
         this.bagPriceLabel = new Label(driver, bagPrice);
         this.deleteItemButton = new Button(driver, deleteItem);
-        //this.amountInCartLabel = new Label(driver, amountInCart);
+        this.amountInCartLabel = new Label(driver, amountInCart);
         this.quantityInput = new TextInput(driver, quantity);
         this.recalculateButtom = new Button(driver,recalculate);
     }
@@ -67,6 +69,11 @@ public class ReviewYourOrderPage extends BasePage{
 
     public void recalculateClick(){
         this.recalculateButtom.clickWithJs();
+        for (int i = 100; i>0; i--){
+            if (Objects.equals("(1)", this.amountInCartLabel = new Label(driver, amountInCart))){
+                System.out.println("waiting");
+            }
+        }
     }
 
 

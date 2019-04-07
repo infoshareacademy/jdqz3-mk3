@@ -1,8 +1,11 @@
 package pages;
 
 import elements.Button;
+import elements.Label;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Objects;
 
 public class HandbagsCataloguePage extends BasePage {
 
@@ -13,6 +16,11 @@ public class HandbagsCataloguePage extends BasePage {
     private Button shoppingCartButton;
     private Button checkoutButton;
     public MainMenu menu;
+
+    private By deleteSelector = By.cssSelector(".removeProductIcon");
+    private Button deleteButton;
+    private By amountInCart = By.cssSelector("#miniCartSummary a");
+    private Label amountInCartLabel;
 
     public HandbagsCataloguePage(WebDriver driver) {
         super(driver);
@@ -31,6 +39,21 @@ public class HandbagsCataloguePage extends BasePage {
         this.checkoutButton = new Button(this.driver, this.checkout);
         this.checkoutButton.clickWithJs();
     }
+    public void clickDeleteButton(){
+        this.shoppingCartButton.safeClick();
+        this.deleteButton = new Button(this.driver, this.deleteSelector);
+        this.deleteButton.clickWithJs();
+        for (int i = 100; i>0; i--){
+            if (Objects.equals("(1)", this.amountInCartLabel = new Label(driver, amountInCart))){
+                System.out.println("waiting");
+            }
+        }
+    }
 
+    public String readAmountInCart() {
+        this.amountInCartLabel = new Label(driver, amountInCart);
+        String amountInCart = amountInCartLabel.readLabel();
+        return amountInCart;
+    }
 
 }
