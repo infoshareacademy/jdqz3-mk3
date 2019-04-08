@@ -10,7 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
 
-public class RegisteredUser {
+public class UnregisteredUser {
+
     private WebDriver driver;
     private MainPage mainPage;
     private Address address;
@@ -25,27 +26,9 @@ public class RegisteredUser {
         this.user = new User();
     }
 
-    @Before
-    public void register() {
-        mainPage = new MainPage(driver);
-        mainPage.enterRegistrationPage();
-        Register registerPage = new Register(driver);
-        registerPage.fillInRegistrationForm(user, address);
-        registerPage.clickCreateAnAccButton();
-        AfterRegistrationPage afterRegistrationPage = new AfterRegistrationPage(driver);
-        Assert.assertEquals(user.getFirstName(), afterRegistrationPage.getLoginFromNavBar());
-        afterRegistrationPage.clickLogoToGoToMainPage();
-    }
-
-    //    @After
-//    public void close() {
-//        mainPage.close();
-//    }
-
-
     @Test
-    public void registeredPurchaseOrderConfirmation() {
-        mainPage = new MainPage(driver);
+    public void purchaseWihRegistration() {
+        MainPage mainPage = new MainPage(driver);
         mainPage.chooseHandbagsCategory();
         HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
         handbagsCataloguePage.addBagToCart();
@@ -53,11 +36,36 @@ public class RegisteredUser {
         ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
         review.orderToCheckout();
         CheckoutPage checkoutPage = new CheckoutPage(driver);
-        checkoutPage.InsertDataForRegisteredUser(user, address);
+        checkoutPage.logInOrRegisterButton();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.createNewAccount();
+        mainPage.enterRegistrationPage();
+        Register registerPage = new Register(driver);
+        registerPage.fillInRegistrationForm(user, address);
+        registerPage.clickCreateAnAccButton();
+        AfterRegistrationPage afterRegistrationPage = new AfterRegistrationPage(driver);
+        afterRegistrationPage.getShoppingCardAmound();
+        Assert.assertEquals("Shopping cart (1)", afterRegistrationPage.getShoppingCardAmound());
+    }
+
+    @Test
+    public void purchaseWithCreatingAnAccountCheckBox() {
+        mainPage.chooseHandbagsCategory();
+        HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
+        handbagsCataloguePage.addBagToCart();
+        handbagsCataloguePage.proceedToCheckout();
+        ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
+        review.orderToCheckout();
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.insertData(user, address);
+        checkoutPage.checkCreateAnAccountCheckBox(user);
         checkoutPage.submitOrder();
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
-        orderConfirmationPage.gotToMyAcc();
-
+        orderConfirmationPage.chooseSignInLink();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.insertCustomerDataAndSignIn(user);
+        AfterRegistrationPage afterRegistrationPage = new AfterRegistrationPage(driver);
+        Assert.assertEquals(user.getFirstName(), afterRegistrationPage.getLoginFromNavBar());
 
     }
 }
