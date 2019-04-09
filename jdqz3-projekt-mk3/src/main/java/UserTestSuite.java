@@ -1,17 +1,18 @@
-import categories.CatalogueCategory;
-import categories.PurchaseCategory;
+import categories.UserCategory;
 import org.junit.experimental.categories.Categories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import test.TestPurchase;
+import test.*;
 
 @RunWith(Categories.class)
 @Categories.IncludeCategory({
-        PurchaseCategory.class
+        UserCategory.class
 })
 @Suite.SuiteClasses({
+        RegisteredUserTests.class,
+        NotRegisteredUserTests.class,
         TestPurchase.class
 })
 
-public class PurchaseTestSuite {
+public class UserTestSuite {
 }

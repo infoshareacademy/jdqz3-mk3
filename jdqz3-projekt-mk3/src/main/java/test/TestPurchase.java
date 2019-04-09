@@ -1,10 +1,9 @@
 package test;
 
-import categories.CartTests;
-import categories.PurchaseTests;
-import generators.BagGenerator;
+import categories.CartCategory;
+import categories.PurchaseCategory;
+import categories.UserCategory;
 import models.Address;
-import models.Bag;
 import models.User;
 import org.junit.After;
 import org.junit.Assert;
@@ -20,11 +19,10 @@ public class TestPurchase {
     private MainPage mainPage;
     private Address address;
     private User user;
-    private Bag bag;
+
     @Before
     public void startBrowser() {
         driver = new ChromeDriver();
-        //
         mainPage = new MainPage(driver);
         this.address = new Address();
         this.user = new User();
@@ -35,7 +33,7 @@ public class TestPurchase {
         mainPage.close();
     }
 
-    @Category(PurchaseTests.class)
+    @Category(PurchaseCategory.class)
     @Test
     public void purchaseBag() {
         mainPage.chooseHandbagsCategory();
@@ -53,7 +51,7 @@ public class TestPurchase {
         Assert.assertTrue(orderConfirmationPage.orderConfirmationLabel().equals("Order completed"));
     }
 
-    @Category(CartTests.class)
+    @Category(CartCategory.class)
     @Test
     public void addToCart() {
         mainPage.chooseHandbagsCategory();
@@ -65,6 +63,7 @@ public class TestPurchase {
         Assert.assertEquals("Chic vintage DeVille", review.isCartContentCorrect());
     }
 
+    @Category(PurchaseCategory.class)
     @Test
     public void priceInCart() {
         mainPage.chooseHandbagsCategory();
@@ -76,22 +75,34 @@ public class TestPurchase {
         Assert.assertEquals("$78.00", review.isPriceInCartCorect());
     }
 
+    @Category(UserCategory.class)
     @Test
     public void register(){
         mainPage.enterRegistrationPage();
         Register registerPage = new Register(driver);
         registerPage.fillInRegistrationForm(user, address);
         registerPage.clickCreateAnAccButton();
-        AfterRegistrationPage afterRegistrationPage = new AfterRegistrationPage(driver);
-        Assert.assertEquals(user.getFirstName(), afterRegistrationPage.getLoginFromNavBar());
     }
 
+    @Category(PurchaseCategory.class)
     @Test
-    public void checkMessageWhenSignInWithoutCredentials() {
-        mainPage.enterSignInPage();
+    public void purchaseWihRegistration(){
+        mainPage.chooseHandbagsCategory();
+        HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
+        handbagsCataloguePage.addBagToCart();
+        handbagsCataloguePage.proceedToCheckout();
+        ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
+        review.orderToCheckout();
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.logInOrRegisterButton();
         SignInPage signInPage = new SignInPage(driver);
-        signInPage.clickSignInButton();
-        Assert.assertEquals("Login Failed. Username or Password is incorrect.", signInPage.isMessageForEmptyCredentialsCorrect());
+        signInPage.createNewAccount();
+        mainPage.enterRegistrationPage();
+        Register registerPage = new Register(driver);
+        registerPage.fillInRegistrationForm(user, address);
+        registerPage.clickCreateAnAccButton();
+        AfterRegistrationPage afterRegistrationPage = new AfterRegistrationPage(driver);
+        afterRegistrationPage.getShoppingCardAmound();
+        Assert.assertEquals("Shopping cart (1)", afterRegistrationPage.getShoppingCardAmound());
     }
-
 }
