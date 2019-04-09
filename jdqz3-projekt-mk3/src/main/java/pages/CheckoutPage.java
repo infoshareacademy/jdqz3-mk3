@@ -1,5 +1,4 @@
 package pages;
-
 import elements.Button;
 import elements.Select;
 import elements.TextInput;
@@ -7,8 +6,8 @@ import models.Address;
 import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 public class CheckoutPage extends BasePage {
+    private By logInOrRegister = By.cssSelector("p.muted.common-row a");
     private By firstName = By.xpath("//input[@id='customer.firstName']");
     private By lastName = By.xpath("//input[@id='customer.lastName']");
     private By billingCompany = By.cssSelector("[name='customer.billing.company']");
@@ -20,6 +19,7 @@ public class CheckoutPage extends BasePage {
     private By emailAddress = By.cssSelector("[name='customer.emailAddress']");
     private By phoneNumber = By.cssSelector("[name='customer.billing.phone']");
     private By submitOrder = By.xpath("//button[@id='submitOrder']");
+    private Button logInOrRegisterButton;
     private TextInput firstNameText;
     private TextInput lastNameText;
     private TextInput billingCompanyText;
@@ -31,7 +31,6 @@ public class CheckoutPage extends BasePage {
     private TextInput emailAddressText;
     private TextInput phoneNumberText;
     private Button submitOrderButton;
-
     public CheckoutPage(WebDriver driver) {
         super(driver);
         this.firstNameText = new TextInput(driver, firstName);
@@ -45,7 +44,6 @@ public class CheckoutPage extends BasePage {
         this.emailAddressText = new TextInput(driver, emailAddress);
         this.phoneNumberText= new TextInput(driver, phoneNumber);
     }
-
     public void insertData(User user, Address address) {
         this.firstNameText.fillingField(user.getFirstName());
         this.lastNameText.fillingField(user.getLastName());
@@ -58,9 +56,12 @@ public class CheckoutPage extends BasePage {
         this.emailAddressText.fillingField(user.getEmail());
         this.phoneNumberText.fillingField(user.getPhoneNumber());
     }
-
     public void submitOrder() {
         this.submitOrderButton = new Button(driver, submitOrder);
         this.submitOrderButton.clickWithJs();
+    }
+    public void logInOrRegisterButton(){
+        this.logInOrRegisterButton = new Button(driver, logInOrRegister);
+        this.logInOrRegisterButton.click();
     }
 }

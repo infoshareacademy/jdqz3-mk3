@@ -46,7 +46,7 @@ public class Register extends BasePage {
         this.firstName.fillingField(user.getFirstName());
     }
     private void insertLastName(User user){
-        this.lastName.fillingField(user.getFirstName());
+        this.lastName.fillingField(user.getLastName());
     }
     private void insertCountry(Address address){
         this.country.chooseOption(address.getCountry());
@@ -64,18 +64,19 @@ public class Register extends BasePage {
         this.repeatPassword.fillingField(user.getPassword());
     }
 
+    public void clickCreateAnAccButton(){
+        this.createAnAccButton = new Button(driver, createAnAccSelector);
+        createAnAccButton.click();
+    }
+
     public void fillInRegistrationForm(User user, Address address){
         insertFirstName(user);
         insertLastName(user);
-        insertState(address);
         insertCountry(address);
+        insertState(address);
         insertEmail(user);
         insertPassword(user);
         insertRepeatedPassword(user);
     }
 
-    public void clickCreateAnAccButton(){
-        this.createAnAccButton = new Button(driver, createAnAccSelector);
-        createAnAccButton.click();
-    }
 }
