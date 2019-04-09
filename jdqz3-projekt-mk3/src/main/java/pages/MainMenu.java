@@ -22,9 +22,7 @@ public class MainMenu extends BasePage {
 
     public MainMenu(WebDriver driver) {
         super(driver);
-
     }
-
 
     public boolean isHandbagpresent() {
         try {
@@ -33,7 +31,6 @@ public class MainMenu extends BasePage {
         } catch (TimeoutException e) {
             return false;
         }
-
     }
 
     public boolean isBeachBagsPresent() {
@@ -43,7 +40,6 @@ public class MainMenu extends BasePage {
         } catch (TimeoutException e) {
             return false;
         }
-
     }
 
     public boolean isLaptopBagsPresent() {
@@ -53,16 +49,14 @@ public class MainMenu extends BasePage {
         } catch (TimeoutException e) {
             return false;
         }
-
     }
-public boolean isBagsPresent() {
+
+    public boolean isBagsPresent() {
         try {
             this.bagsWord = new Label(this.driver, this.bagsWordSelector);
             return true;
         } catch (TimeoutException e) {
             return false;
         }
-
     }
-
 }

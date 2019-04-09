@@ -102,6 +102,7 @@ public class RegisteredUserTests {
         Assert.assertEquals("Request completed with success", billingShippingPage.successMessage());
     }
 
+    @Category(UserCategory.class)
     @Test
     public void isBillingAddressEdited() {
         AccountPage accountPage = new AccountPage(driver);

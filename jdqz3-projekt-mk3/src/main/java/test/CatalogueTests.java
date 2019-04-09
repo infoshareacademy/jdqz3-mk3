@@ -25,7 +25,6 @@ public class CatalogueTests{
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
         this.user = new User();
-
     }
 
     @After
@@ -55,7 +54,5 @@ public class CatalogueTests{
         contactUsPage.insertComments();
         contactUsPage.clickCaptcha();
         contactUsPage.clickSend();
-
     }
-
 }

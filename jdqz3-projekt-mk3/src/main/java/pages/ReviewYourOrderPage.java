@@ -18,7 +18,6 @@ public class ReviewYourOrderPage extends BasePage{
     private Label bagNameLabel;
     private By bagPrice = By.xpath("//table[@id='mainCartTable']//td[3]//strong");
     private Label bagPriceLabel;
-
     private By deleteItem = By.cssSelector("a.removeProductIcon");
     private Button deleteItemButton;
     private By amountInCart = By.cssSelector("#miniCartSummary strong");
@@ -75,6 +74,4 @@ public class ReviewYourOrderPage extends BasePage{
             }
         }
     }
-
-
 }

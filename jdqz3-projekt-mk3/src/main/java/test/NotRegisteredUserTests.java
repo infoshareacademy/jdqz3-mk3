@@ -41,5 +41,4 @@ public class NotRegisteredUserTests {
         signInPage.clickSignInButton();
         Assert.assertEquals("Login Failed. Username or Password is incorrect.", signInPage.isMessageForEmptyCredentialsCorrect());
     }
-
 }
