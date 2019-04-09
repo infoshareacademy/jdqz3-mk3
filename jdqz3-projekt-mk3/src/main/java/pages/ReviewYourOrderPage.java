@@ -30,7 +30,7 @@ public class ReviewYourOrderPage extends BasePage{
 
     public ReviewYourOrderPage(WebDriver driver) {
         super(driver);
-        this.proceedToCheckoutButton = new Button(driver, proceedToCheckout);
+
         this.bagNameLabel = new Label(driver, bagName);
         this.bagPriceLabel = new Label(driver, bagPrice);
         this.deleteItemButton = new Button(driver, deleteItem);
@@ -40,6 +40,7 @@ public class ReviewYourOrderPage extends BasePage{
     }
 
     public void orderToCheckout() {
+        this.proceedToCheckoutButton = new Button(driver, proceedToCheckout);
         this.proceedToCheckoutButton.click();
     }
 

@@ -104,4 +104,9 @@ public class BillingShippingPage extends BasePage {
         this.confirmationMessage = new Label(driver, confirmationMessageSelector);
         return this.confirmationMessage.readLabel();
     }
+
+    public void clickBillingAddresEditButton(){
+        this.billingAdressEdit = new Button(driver, billingAdressEditSelector);
+        billingAdressEdit.click();
+    }
 }

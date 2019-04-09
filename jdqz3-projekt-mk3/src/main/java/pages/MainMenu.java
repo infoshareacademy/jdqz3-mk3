@@ -9,7 +9,9 @@ import org.openqa.selenium.WebDriver;
 public class MainMenu extends BasePage {
 
     private By handBagsWordSelector = By.xpath("//h2[@class='shop-banner-title lead' and text()='Handbags']");
+    private By handBagSelector = By.xpath("//div[contains(@class, 'mainmenu')]//a[text()='Handbags']");
     private Label handBagsWord;
+    private Button handBags;
 
     private By beachBagsWordSelector = By.xpath("//h2[@class='shop-banner-title lead' and text()='Beach bags']");
     private Label beachBagsWord;
@@ -22,7 +24,6 @@ public class MainMenu extends BasePage {
 
     public MainMenu(WebDriver driver) {
         super(driver);
-
     }
 
 
@@ -63,6 +64,11 @@ public boolean isBagsPresent() {
             return false;
         }
 
+    }
+
+    public void clickHandBagCategory(){
+        this.handBags = new Button(driver, handBagSelector);
+        handBags.click();
     }
 
 }

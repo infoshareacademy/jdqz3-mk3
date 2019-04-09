@@ -1,5 +1,6 @@
 package pages;
 import elements.Button;
+import elements.Label;
 import elements.Select;
 import elements.TextInput;
 import models.Address;
@@ -36,6 +37,8 @@ public class CheckoutPage extends BasePage {
     private Button submitOrderButton;
     private Button createAnAccountCheckbox;
     private TextInput insertAPassword;
+
+    private Label firstNameLabel;
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -87,5 +90,11 @@ public class CheckoutPage extends BasePage {
         this.createAnAccountCheckbox.click();
         this.insertAPassword = new TextInput(driver, insertAPasswodSelector);
         insertAPassword.fillingField(user.getPassword());
+    }
+
+    public String getFirstName(){
+        String nameAttribute=driver.findElement(By.xpath("//input[@id='customer.firstName']")).getAttribute("value");
+        return  nameAttribute;
+
     }
 }
