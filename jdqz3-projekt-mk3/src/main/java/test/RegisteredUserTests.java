@@ -16,6 +16,7 @@ public class RegisteredUserTests {
     private WebDriver driver;
     private MainPage mainPage;
     private Address address;
+    private Address address2;
     private User user;
     private User user2;
 
@@ -24,6 +25,7 @@ public class RegisteredUserTests {
         driver = new ChromeDriver();
         mainPage = new MainPage(driver);
         this.address = new Address();
+        this.address2 = new Address();
         this.user = new User();
         this.user2 = new User();
         mainPage.enterRegistrationPage();
@@ -98,5 +100,15 @@ public class RegisteredUserTests {
         BillingShippingPage billingShippingPage = new BillingShippingPage(driver);
         billingShippingPage.fillShippingAddress(user, address);
         Assert.assertEquals("Request completed with success", billingShippingPage.successMessage());
+    }
+
+    @Test
+    public void isBillingAddressEdited() {
+        AccountPage accountPage = new AccountPage(driver);
+        accountPage.goToBillingAndShippingInformation();
+        accountPage.clickEditBillingAddress();
+        BillingShippingPage billingShippingPage = new BillingShippingPage(driver);
+        billingShippingPage.fillShippingAddress(user, address2);
+        Assert.assertEquals("Request completed with success", billingShippingPage.readEditedAddressMessage());
     }
 }
