@@ -25,8 +25,8 @@ public class AccountPage extends BasePage {
     private Button shippingAddress;
     private By shippingAdddressSelector = By.xpath("//a[contains(text(),'Add a new address')]");
 
-    private Button billingAdressEdit;
-    private By billingAdressEditSelector = By.xpath("//*[contains(text(),'Billing Address')]/a");
+    private Button editBillingAddress;
+    private By editBillingAddressSelector = By.xpath("//div[@id='main-content']//a[contains(text(),'Edit')]");
 
     public AccountPage(WebDriver driver){
         super(driver);
@@ -52,8 +52,10 @@ public class AccountPage extends BasePage {
         shippingAddress.click();
     }
 
-    public void clickBillingAddresEditButton(){
-        this.billingAdressEdit = new Button(driver, billingAdressEditSelector);
-        billingAdressEdit.click();
+    public void clickEditBillingAddress() {
+        this.editBillingAddress = new Button(driver, editBillingAddressSelector);
+        editBillingAddress.click();
     }
+
+
 }

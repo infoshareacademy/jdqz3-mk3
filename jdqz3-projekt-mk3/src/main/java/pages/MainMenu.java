@@ -26,7 +26,6 @@ public class MainMenu extends BasePage {
         super(driver);
     }
 
-
     public boolean isHandbagpresent() {
         try {
             this.handBagsWord = new Label(this.driver, this.handBagsWordSelector);
@@ -34,7 +33,6 @@ public class MainMenu extends BasePage {
         } catch (TimeoutException e) {
             return false;
         }
-
     }
 
     public boolean isBeachBagsPresent() {
@@ -44,7 +42,6 @@ public class MainMenu extends BasePage {
         } catch (TimeoutException e) {
             return false;
         }
-
     }
 
     public boolean isLaptopBagsPresent() {
@@ -54,16 +51,15 @@ public class MainMenu extends BasePage {
         } catch (TimeoutException e) {
             return false;
         }
-
     }
-public boolean isBagsPresent() {
+
+    public boolean isBagsPresent() {
         try {
             this.bagsWord = new Label(this.driver, this.bagsWordSelector);
             return true;
         } catch (TimeoutException e) {
             return false;
         }
-
     }
 
     public void clickHandBagCategory(){

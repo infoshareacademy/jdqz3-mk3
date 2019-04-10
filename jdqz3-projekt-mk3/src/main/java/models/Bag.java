@@ -81,6 +81,4 @@ public class Bag {
                 ", lenght='" + lenght + '\'' +
                 '}';
     }
-
-
 }

@@ -3,22 +3,24 @@ package test;
 import categories.CartCategory;
 import categories.PurchaseCategory;
 import categories.UserCategory;
+import generators.ScreenshotGenerator;
 import models.Address;
 import models.User;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.experimental.categories.Category;
+import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
+
+import java.io.IOException;
 
 public class TestPurchase {
     private WebDriver driver;
     private MainPage mainPage;
     private Address address;
     private User user;
+    private ScreenshotGenerator sg;
 
     @Before
     public void startBrowser() {
@@ -26,12 +28,17 @@ public class TestPurchase {
         mainPage = new MainPage(driver);
         this.address = new Address();
         this.user = new User();
+        this.sg = new ScreenshotGenerator();
     }
 
     @After
-    public void close() {
+    public void close() throws IOException {
+        sg.takesScreenshot(driver, name.getMethodName());
         mainPage.close();
     }
+
+    @Rule
+    public final TestName name = new TestName();
 
     @Category(PurchaseCategory.class)
     @Test

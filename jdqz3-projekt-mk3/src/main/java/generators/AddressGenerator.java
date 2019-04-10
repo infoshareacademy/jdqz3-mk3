@@ -30,5 +30,4 @@ public class AddressGenerator extends RandomGenerator{
         String state = capitalize(generateRandomString(8));
         return state;
     }
-
 }

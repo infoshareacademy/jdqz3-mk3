@@ -5,8 +5,6 @@ public class Payment {
     private String name;
     private Address address;
 
-
-
     public Payment() {
         this.name = "Vintage Bags";
         this.address = new Address();

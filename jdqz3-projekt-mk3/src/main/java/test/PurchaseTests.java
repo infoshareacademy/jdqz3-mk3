@@ -1,8 +1,10 @@
 package test;
 
 import categories.PurchaseCategory;
+import generators.ScreenshotGenerator;
 import models.Address;
 import models.User;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,10 +27,10 @@ public class PurchaseTests {
         this.user = new User();
     }
 
-//    @After
-//    public void close() {
-//        mainPage.close();
-//    }
+    @After
+    public void close() {
+        mainPage.close();
+    }
 
     @Category(PurchaseCategory.class)
     @Test
@@ -43,23 +45,32 @@ public class PurchaseTests {
         checkoutPage.insertData(user, address);
         checkoutPage.submitOrder();
         OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
-
         Assert.assertEquals("Order completed", orderConfirmationPage.orderConfirmationLabel());
-        Assert.assertTrue(orderConfirmationPage.orderConfirmationLabel().equals("Order completed"));
     }
 
-//    @Category(UserCategory.class)
-//    @Test
-//    public void register(){
-//        mainPage.enterRegistrationPage();
-//        Register registerPage = new Register(driver);
-//        registerPage.fillInRegistrationForm(user, address);
-//        registerPage.clickCreateAnAccButton();
-//    }
+    @Test
+    public void purchaseWithCreatingAnAccountCheckBox() {
+        mainPage.chooseHandbagsCategory();
+        HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
+        handbagsCataloguePage.addBagToCart();
+        handbagsCataloguePage.proceedToCheckout();
+        ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
+        review.orderToCheckout();
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
+        checkoutPage.insertData(user, address);
+        checkoutPage.checkCreateAnAccountCheckBox(user);
+        checkoutPage.submitOrder();
+        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+        orderConfirmationPage.chooseSignInLink();
+        SignInPage signInPage = new SignInPage(driver);
+        signInPage.insertCustomerDataAndSignIn(user);
+        AfterRegistrationPage afterRegistrationPage = new AfterRegistrationPage(driver);
+        Assert.assertEquals(user.getFirstName(), afterRegistrationPage.getLoginFromNavBar());
+    }
 
     @Category(PurchaseCategory.class)
     @Test
-    public void purchaseWihRegistration(){
+    public void checkIfShoppingCardAvaliableAfterRegistration(){
         mainPage.chooseHandbagsCategory();
         HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
         handbagsCataloguePage.addBagToCart();
@@ -99,7 +110,7 @@ public class PurchaseTests {
     }
 
     @Test
-    public void purchaseAsRegisteredUser(){
+    public void checkIfCheckoutPageFilledInWithUserData(){
         this.address = new Address();
         this.user = new User();
         mainPage.enterRegistrationPage();
@@ -108,7 +119,7 @@ public class PurchaseTests {
         registerPage.clickCreateAnAccButton();
         AccountPage accountPage = new AccountPage(driver);
         accountPage.goToBillingAndShippingInformation();
-        accountPage.clickBillingAddresEditButton();
+        accountPage.clickEditBillingAddress();
         BillingShippingPage billingShippingPage = new BillingShippingPage(driver);
         billingShippingPage.fillShippingAddress(user, address);
         MainMenu mainMenu = new MainMenu(driver);
@@ -119,13 +130,29 @@ public class PurchaseTests {
         ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
         review.orderToCheckout();
         CheckoutPage checkoutPage = new CheckoutPage(driver);
-        Assert.assertEquals(user.getFirstName(), checkoutPage.getFirstName());
-//        Assert.assertEquals("Order completed", orderConfirmationPage.orderConfirmationLabel());
-//        Assert.assertTrue(orderConfirmationPage.orderConfirmationLabel().equals("Order completed"));
-
-
-
+        Assert.assertEquals(user.toString(), checkoutPage.getUserData());
     }
 
-
+//    @Test
+//    public void checkIfPurchasedBagInUserAccDetailes() {
+//        mainPage = new MainPage(driver);
+//        this.address = new Address();
+//        mainPage.enterRegistrationPage();
+//        Register registerPage = new Register(driver);
+//        registerPage.fillInRegistrationForm(user, address);
+//        registerPage.clickCreateAnAccButton();
+//        MainMenu mainMenu = new MainMenu(driver);
+//        mainMenu.clickHandBagCategory();
+//        HandbagsCataloguePage handbagsCataloguePage = new HandbagsCataloguePage(driver);
+//        handbagsCataloguePage.addBagToCart();
+//        handbagsCataloguePage.proceedToCheckout();
+//        ReviewYourOrderPage review = new ReviewYourOrderPage(driver);
+//        review.orderToCheckout();
+//        CheckoutPage checkoutPage = new CheckoutPage(driver);
+//        checkoutPage.insertDataForLogedInUser(user, address);
+//        checkoutPage.submitOrder();
+//        OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(driver);
+//        orderConfirmationPage.gotToMyAcc();
+//        AccountPage accountPage = new AccountPage(driver);
+//    }
 }
