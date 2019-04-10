@@ -68,6 +68,7 @@ public class MainPage extends BasePage {
         this.welcome = new Button(driver, welcomeSelector);
         welcome.clickWithJs();
     }
+
     public void chooseLogoutLink() {
         this.logOutButton = new Button(driver, logOutSelector);
         logOutButton.clickWithJs();

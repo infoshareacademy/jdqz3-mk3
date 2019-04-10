@@ -28,13 +28,11 @@ public class ContactUsPage extends BasePage {
     private Button send;
 
     public ContactUsPage(WebDriver driver) {
-
         super(driver);
         this.name = new TextInput(driver,nameSelector);
         this.email = new TextInput(driver,emailAddressSelector);
         this.subject = new TextInput(driver,subjectSelector);
         this.comments = new TextInput(driver,commentsSelector);
-
     }
 
     private void insertName(User user) {
@@ -48,7 +46,6 @@ public class ContactUsPage extends BasePage {
     public void fillInContactForm(User user){
         insertName(user);
         insertEmail(user);
-
     }
 
     public void insertSubject() {
@@ -68,5 +65,4 @@ public class ContactUsPage extends BasePage {
         this.send = new Button(driver,sendSelector);
         send.click();
     }
-
 }

@@ -9,7 +9,6 @@ public class AfterRegistrationPage extends  BasePage{
     private By shoppingCartSelector = By.xpath("//a[starts-with(text(), 'Shopping cart')]");
     private Label shoppingCartAmmount;
 
-
     public AfterRegistrationPage(WebDriver driver) {
         super(driver);
         this.shoppingCartAmmount = new Label(driver, shoppingCartSelector);

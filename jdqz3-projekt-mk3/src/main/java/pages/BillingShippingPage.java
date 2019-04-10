@@ -47,6 +47,9 @@ public class BillingShippingPage extends BasePage {
     private Label confirmationMessage;
     private By confirmationMessageSelector = By.xpath("//div[@id='store.success']");
 
+    private Label editedAddressMessage;
+    private By editedAddressMessageSelector = By.xpath("//div[@id='store.success']");
+
     public BillingShippingPage(WebDriver driver){
         super(driver);
         this.customerFirstName = new TextInput(driver, customerFirstNameSelector);
@@ -103,5 +106,10 @@ public class BillingShippingPage extends BasePage {
     public String successMessage() {
         this.confirmationMessage = new Label(driver, confirmationMessageSelector);
         return this.confirmationMessage.readLabel();
+    }
+
+    public String readEditedAddressMessage() {
+        this.editedAddressMessage = new Label(driver, editedAddressMessageSelector);
+        return this.editedAddressMessage.readLabel();
     }
 }

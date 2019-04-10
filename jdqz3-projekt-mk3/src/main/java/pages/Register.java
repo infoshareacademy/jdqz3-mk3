@@ -13,13 +13,10 @@ public class Register extends BasePage {
     private TextInput lastName;
     private Select country;
     private TextInput state;
-
     private TextInput emailAddress;
     private TextInput password;
     private TextInput repeatPassword;
-
     private Button createAnAccButton;
-
     private By firstNameSelector = By.cssSelector("div.form-group input[title='First name is required']");
     private By lastNameSelector = By.cssSelector("div.form-group input[title='Last name is required']");
     private By countrySelecotr = By.cssSelector("div.form-group select#registration_country");
@@ -27,7 +24,6 @@ public class Register extends BasePage {
     private By emailAddressSelector = By.cssSelector("div.form-group input[title='Email address is required']");
     private By passwordSelector = By.cssSelector("div.form-group input[title='A password is required']");
     private By repeatPasswordSelector = By.cssSelector("div.form-group input[title='Repeated password is required']");
-
     private By createAnAccSelector = By.cssSelector("button.btn.btn-default.login-btn");
 
     public Register(WebDriver driver) {
@@ -39,7 +35,6 @@ public class Register extends BasePage {
         this.emailAddress = new TextInput(driver, emailAddressSelector);
         this.password = new TextInput(driver, passwordSelector);
         this.repeatPassword = new TextInput(driver, repeatPasswordSelector);
-
     }
 
     private void insertFirstName(User user){
@@ -78,5 +73,4 @@ public class Register extends BasePage {
         insertPassword(user);
         insertRepeatedPassword(user);
     }
-
 }

@@ -16,7 +16,6 @@ public class HandbagsCataloguePage extends BasePage {
     private Button shoppingCartButton;
     private Button checkoutButton;
     public MainMenu menu;
-
     private By deleteSelector = By.cssSelector(".removeProductIcon");
     private Button deleteButton;
     private By amountInCart = By.cssSelector("#miniCartSummary a");
@@ -26,8 +25,6 @@ public class HandbagsCataloguePage extends BasePage {
         super(driver);
         this.addToCartButton = new Button(this.driver, this.chicVinategDeVillleBagSelector);
         this.shoppingCartButton = new Button(this.driver, this.shoppingCart);
-
-
     }
 
     public void addBagToCart() {
@@ -55,5 +52,4 @@ public class HandbagsCataloguePage extends BasePage {
         String amountInCart = amountInCartLabel.readLabel();
         return amountInCart;
     }
-
 }

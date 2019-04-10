@@ -8,7 +8,6 @@ public class OrderConfirmationPage extends BasePage {
     private By orderConfirmation = By.xpath("//div[@id='main-content']//h1");
     private Label orderConfirmationLabel;
 
-
     public OrderConfirmationPage(WebDriver driver) {
         super(driver);
         this.orderConfirmationLabel = new Label(driver, orderConfirmation);
