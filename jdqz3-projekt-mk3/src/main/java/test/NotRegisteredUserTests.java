@@ -5,6 +5,7 @@ import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;
 import models.Address;
 import models.User;
+import org.assertj.core.api.Assertions;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,6 +16,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.MainPage;
 import pages.SignInPage;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(JUnitParamsRunner.class)
 public class NotRegisteredUserTests {
@@ -55,6 +58,6 @@ public class NotRegisteredUserTests {
         signInPage.notExistingEmail(email);
         signInPage.notExistingPassword(password);
         signInPage.clickSignInButton();
-        Assert.assertEquals("Login Failed. Username or Password is incorrect.", signInPage.isMessageForEmptyCredentialsCorrect());
+        assertThat(signInPage.isMessageForEmptyCredentialsCorrect()).isEqualTo("Login Failed. Username or Password is incorrect.");
     }
 }
