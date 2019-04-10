@@ -16,7 +16,7 @@ public class ScreenshotGenerator {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
         String fileName = timeStamp + "_" + methodName + ".png";
         System.out.println(fileName);
-        String directory = "src/screenshots/";
+        String directory = "screenshots/";
         File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(screenshotFile, new File(directory + fileName));
     }

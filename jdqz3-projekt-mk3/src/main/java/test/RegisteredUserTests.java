@@ -1,16 +1,17 @@
 package test;
 
 import categories.UserCategory;
+import generators.ScreenshotGenerator;
 import models.Address;
 import models.User;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.experimental.categories.Category;
+import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.*;
+
+import java.io.IOException;
 
 public class RegisteredUserTests {
     private WebDriver driver;
@@ -19,6 +20,7 @@ public class RegisteredUserTests {
     private Address address2;
     private User user;
     private User user2;
+    private ScreenshotGenerator sg;
 
     @Before
     public void startBrowser() {
@@ -29,15 +31,20 @@ public class RegisteredUserTests {
         this.user = new User();
         this.user2 = new User();
         mainPage.enterRegistrationPage();
+        this.sg = new ScreenshotGenerator();
         Register registerPage = new Register(driver);
         registerPage.fillInRegistrationForm(user, address);
         registerPage.clickCreateAnAccButton();
     }
 
     @After
-    public void close() {
+    public void close() throws IOException {
+        sg.takesScreenshot(driver, name.getMethodName());
         mainPage.close();
     }
+
+    @Rule
+    public final TestName name = new TestName();
 
     @Category(UserCategory.class)
     @Test
