@@ -8,23 +8,23 @@ import org.openqa.selenium.WebDriver;
 
 public class MainMenu extends BasePage {
 
-    private By handBagsWordSelector = By.xpath("//h2[@class='shop-banner-title lead' and text()='Handbags']");
-    private By handBagSelector = By.xpath("//div[contains(@class, 'mainmenu')]//a[text()='Handbags']");
+    private By handBagsWordSelector = By.xpath("//div[contains(@class, 'mainmenu')]//a[text()='Handbags']");
     private Label handBagsWord;
-    private Button handBags;
 
-    private By beachBagsWordSelector = By.xpath("//h2[@class='shop-banner-title lead' and text()='Beach bags']");
+    private By beachBagsWordSelector = By.xpath("//div[contains(@class, 'mainmenu')]//a[text()='Beach bags']");
     private Label beachBagsWord;
 
-    private By laptopBagsWordSelector = By.xpath("//h2[@class='shop-banner-title lead' and text()='Laptop bags']");
+    private By laptopBagsWordSelector = By.xpath("//div[contains(@class, 'mainmenu')]//a[text()='Laptop bags']");
     private Label laptopBagsWord;
 
-    private By bagsWordSelector = By.xpath("//h2[@class='shop-banner-title lead' and text()='Bags']");
+    private By bagsWordSelector = By.xpath("//div[contains(@class, 'mainmenu')]//a[text()='Bags']");
     private Label bagsWord;
 
     public MainMenu(WebDriver driver) {
         super(driver);
+
     }
+
 
     public boolean isHandbagpresent() {
         try {
@@ -33,6 +33,7 @@ public class MainMenu extends BasePage {
         } catch (TimeoutException e) {
             return false;
         }
+
     }
 
     public boolean isBeachBagsPresent() {
@@ -42,6 +43,7 @@ public class MainMenu extends BasePage {
         } catch (TimeoutException e) {
             return false;
         }
+
     }
 
     public boolean isLaptopBagsPresent() {
@@ -51,8 +53,8 @@ public class MainMenu extends BasePage {
         } catch (TimeoutException e) {
             return false;
         }
-    }
 
+    }
     public boolean isBagsPresent() {
         try {
             this.bagsWord = new Label(this.driver, this.bagsWordSelector);
@@ -60,11 +62,7 @@ public class MainMenu extends BasePage {
         } catch (TimeoutException e) {
             return false;
         }
-    }
 
-    public void clickHandBagCategory(){
-        this.handBags = new Button(driver, handBagSelector);
-        handBags.click();
     }
 
 }

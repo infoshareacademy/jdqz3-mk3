@@ -15,7 +15,6 @@ public class HandbagsCataloguePage extends BasePage {
     private Button addToCartButton;
     private Button shoppingCartButton;
     private Button checkoutButton;
-    public MainMenu menu;
     private By deleteSelector = By.cssSelector(".removeProductIcon");
     private Button deleteButton;
     private By amountInCart = By.cssSelector("#miniCartSummary a");
