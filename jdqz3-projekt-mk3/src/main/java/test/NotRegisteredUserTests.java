@@ -54,7 +54,7 @@ public class NotRegisteredUserTests {
         Assert.assertEquals("Login Failed. Username or Password is incorrect.", signInPage.isMessageForEmptyCredentialsCorrect());
     }
 
-//    Below test is commented out because parametrized tests cause error wen running from suite
+//    Below test is commented out because parametrized tests cause error when running from suite
 
 //    @Category(UserCategory.class)
 //    @Parameters({" , ", "NotExistingLogin, NotExistingPassword"})
