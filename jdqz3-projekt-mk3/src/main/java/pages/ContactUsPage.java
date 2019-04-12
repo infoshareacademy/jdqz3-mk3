@@ -38,9 +38,7 @@ public class ContactUsPage extends BasePage {
         this.email = new TextInput(driver,emailAddressSelector);
         this.subject = new TextInput(driver,subjectSelector);
         this.comments = new TextInput(driver,commentsSelector);
-
     }
-
     private void insertName(User user) {
         this.name.fillingField(user.getFirstName() + " " + user.getLastName());
     }
@@ -52,9 +50,7 @@ public class ContactUsPage extends BasePage {
     public void fillInContactForm(User user){
         insertName(user);
         insertEmail(user);
-
     }
-
     public void insertSubject() {
         this.subject.fillingField("ddd");
     }
@@ -67,16 +63,13 @@ public class ContactUsPage extends BasePage {
         this.captcha = new Button(driver, captchaSelector);
         captcha.click();
     }
-
     public void clickSend(){
         this.send = new Button(driver,sendSelector);
         send.click();
     }
-
     public String isCorectMessage() {
         this.message = new Label(driver,messageSelector);
         String messageForCorrectAnswer = message.readLabel();
         return messageForCorrectAnswer;
     }
-
 }

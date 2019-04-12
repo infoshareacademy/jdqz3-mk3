@@ -45,7 +45,6 @@ public class HandbagsCataloguePage extends BasePage {
             }
         }
     }
-
     public String readAmountInCart() {
         this.amountInCartLabel = new Label(driver, amountInCart);
         String amountInCart = amountInCartLabel.readLabel();
