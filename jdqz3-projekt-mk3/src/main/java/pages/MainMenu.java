@@ -21,8 +21,8 @@ public class MainMenu extends BasePage {
 
     public MainMenu(WebDriver driver) {
         super(driver);
-
     }
+
     public boolean isHandbagpresent() {
         try {
             this.handBagsWord = new Label(this.driver, this.handBagsWordSelector);
