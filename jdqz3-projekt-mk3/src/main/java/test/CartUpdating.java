@@ -1,7 +1,9 @@
 package test;
 
+import categories.CartCategory;
 import generators.ScreenshotGenerator;
 import org.junit.*;
+import org.junit.experimental.categories.Category;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -31,6 +33,7 @@ public class CartUpdating {
     @Rule
     public final TestName name = new TestName();
 
+    @Category(CartCategory.class)
     @Test
     public void deleteFromCart(){
         mainPage.chooseHandbagsCategory();
@@ -42,6 +45,7 @@ public class CartUpdating {
         Assert.assertEquals("http://demo.shopizer.com:8080/shop/", driver.getCurrentUrl());
     }
 
+    @Category(CartCategory.class)
     @Test
     public void deleteFromCartCataloguePage(){
         mainPage.chooseHandbagsCategory();
@@ -51,6 +55,7 @@ public class CartUpdating {
         Assert.assertEquals("Shopping cart (0)", handbagsCataloguePage.readAmountInCart());
     }
 
+    @Category(CartCategory.class)
     @Test
     public void changeAmount(){
         mainPage.chooseHandbagsCategory();

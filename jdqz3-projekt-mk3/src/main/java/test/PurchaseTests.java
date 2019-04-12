@@ -48,6 +48,7 @@ public class PurchaseTests {
         Assert.assertEquals("Order completed", orderConfirmationPage.orderConfirmationLabel());
     }
 
+    @Category(PurchaseCategory.class)
     @Test
     public void purchaseWithCreatingAnAccountCheckBox() {
         mainPage.chooseHandbagsCategory();
@@ -90,6 +91,7 @@ public class PurchaseTests {
         Assert.assertEquals("Shopping cart (1)", afterRegistrationPage.getShoppingCardAmound());
     }
 
+    @Category(PurchaseCategory.class)
     @Test
     public void purchaseABigAmmount(){
         mainPage.chooseHandbagsCategory();
@@ -109,6 +111,7 @@ public class PurchaseTests {
         Assert.assertTrue(orderConfirmationPage.orderConfirmationLabel().equals("Order completed"));
     }
 
+    @Category(PurchaseCategory.class)
     @Test
     public void checkIfCheckoutPageFilledInWithUserData(){
         this.address = new Address();
@@ -133,6 +136,7 @@ public class PurchaseTests {
         Assert.assertEquals(user.toString(), checkoutPage.getUserData());
     }
 
+    //    @Category(PurchaseCategory.class)
 //    @Test
 //    public void checkIfPurchasedBagInUserAccDetailes() {
 //        mainPage = new MainPage(driver);
