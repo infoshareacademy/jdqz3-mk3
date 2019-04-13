@@ -1,5 +1,6 @@
 package test;
 
+import categories.PresentationCategory;
 import categories.UserCategory;
 import generators.ScreenshotGenerator;
 import models.Address;
@@ -46,7 +47,7 @@ public class RegisteredUserTests {
     @Rule
     public final TestName name = new TestName();
 
-    @Category(UserCategory.class)
+    @Category({UserCategory.class, PresentationCategory.class})
     @Test
     public void isRegisteredUserSignedIn() {
         mainPage.logout();
@@ -56,7 +57,7 @@ public class RegisteredUserTests {
         Assert.assertEquals(user.getFirstName(), signInPage.getRegisteredUserFirstName());
     }
 
-    @Category(UserCategory.class)
+    @Category({UserCategory.class, PresentationCategory.class})
     @Test
     public void isRegisteredUserLoggedOut() {
         mainPage.logout();
@@ -68,7 +69,7 @@ public class RegisteredUserTests {
         Assert.assertNotEquals(user.getFirstName(), mainPage.getMyAccountText());
     }
 
-    @Category(UserCategory.class)
+    @Category({UserCategory.class, PresentationCategory.class})
     @Test
     public void isPasswordChangedToTheSamePassword() {
         AccountPage accountPage = new AccountPage(driver);
@@ -78,7 +79,7 @@ public class RegisteredUserTests {
         Assert.assertNotEquals("Invalid password", changePasswordPage.readPasswordMessage());
     }
 
-    @Category(UserCategory.class)
+    @Category({UserCategory.class, PresentationCategory.class})
     @Test
     public void isEmptyPasswordNotAccepted() {
         AccountPage accountPage = new AccountPage(driver);
@@ -88,7 +89,7 @@ public class RegisteredUserTests {
         Assert.assertEquals("Please provide a new password", changePasswordPage.readEmptyPasswordMessage());
     }
 
-    @Category(UserCategory.class)
+    @Category({UserCategory.class, PresentationCategory.class})
     @Test
     public void isPasswordChanged() {
         AccountPage accountPage = new AccountPage(driver);
@@ -98,7 +99,7 @@ public class RegisteredUserTests {
         Assert.assertNotEquals("Invalid password", changePasswordPage.readPasswordMessage());
     }
 
-    @Category(UserCategory.class)
+    @Category({UserCategory.class, PresentationCategory.class})
     @Test
     public void isShippingAddressAdded() {
         AccountPage accountPage = new AccountPage(driver);
@@ -109,7 +110,7 @@ public class RegisteredUserTests {
         Assert.assertEquals("Request completed with success", billingShippingPage.successMessage());
     }
 
-    @Category(UserCategory.class)
+    @Category({UserCategory.class, PresentationCategory.class})
     @Test
     public void isBillingAddressEdited() {
         AccountPage accountPage = new AccountPage(driver);

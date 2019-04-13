@@ -1,5 +1,6 @@
 package test;
 
+import categories.PresentationCategory;
 import categories.UserCategory;
 import generators.ScreenshotGenerator;
 import junitparams.JUnitParamsRunner;
@@ -45,7 +46,7 @@ public class NotRegisteredUserTests {
     @Rule
     public final TestName name = new TestName();
 
-    @Category(UserCategory.class)
+    @Category({UserCategory.class, PresentationCategory.class})
     @Test
     public void signInWithoutCredentials() {
         mainPage.enterSignInPage();

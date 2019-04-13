@@ -20,7 +20,6 @@ import test.*;
         RegisteredUserTests.class,
         NotRegisteredUserTests.class,
         PurchaseTests.class,
-        TestPurchase.class
 })
 
 public class AllTestSuite {

@@ -1,6 +1,7 @@
 package test;
 
 import categories.CartCategory;
+import categories.PresentationCategory;
 import generators.ScreenshotGenerator;
 import org.junit.*;
 import org.junit.experimental.categories.Category;
@@ -55,7 +56,8 @@ public class CartUpdating {
         Assert.assertEquals("Shopping cart (0)", handbagsCataloguePage.readAmountInCart());
     }
 
-    @Category(CartCategory.class)
+
+    @Category({CartCategory.class, PresentationCategory.class})
     @Test
     public void changeAmount(){
         mainPage.chooseHandbagsCategory();
