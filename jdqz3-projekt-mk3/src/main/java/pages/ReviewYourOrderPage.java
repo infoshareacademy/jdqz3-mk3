@@ -18,7 +18,6 @@ public class ReviewYourOrderPage extends BasePage{
     private Label bagNameLabel;
     private By bagPrice = By.xpath("//table[@id='mainCartTable']//td[3]//strong");
     private Label bagPriceLabel;
-
     private By deleteItem = By.cssSelector("a.removeProductIcon");
     private Button deleteItemButton;
     private By amountInCart = By.cssSelector("#miniCartSummary strong");
@@ -30,7 +29,7 @@ public class ReviewYourOrderPage extends BasePage{
 
     public ReviewYourOrderPage(WebDriver driver) {
         super(driver);
-        this.proceedToCheckoutButton = new Button(driver, proceedToCheckout);
+
         this.bagNameLabel = new Label(driver, bagName);
         this.bagPriceLabel = new Label(driver, bagPrice);
         this.deleteItemButton = new Button(driver, deleteItem);
@@ -40,6 +39,7 @@ public class ReviewYourOrderPage extends BasePage{
     }
 
     public void orderToCheckout() {
+        this.proceedToCheckoutButton = new Button(driver, proceedToCheckout);
         this.proceedToCheckoutButton.click();
     }
 
@@ -75,6 +75,4 @@ public class ReviewYourOrderPage extends BasePage{
             }
         }
     }
-
-
 }

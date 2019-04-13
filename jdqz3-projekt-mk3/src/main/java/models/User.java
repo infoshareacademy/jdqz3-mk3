@@ -63,14 +63,10 @@ public class User {
 
     @Override
     public String toString() {
-        return "First Name: " + firstName +"\n" +
-                "Last Name: " + lastName + "\n" +
-                "Billing company: " + billingCompany + "\n" +
-                "Address: " + address + "\n" +
-                "Email: " + email + "\n" +
-                "Phone number: " + phoneNumber + "\n" +
-                "Shipping address: " + shippingAddress + "\n" +
-                "Order notes: " + orderNotes + "\n" +
-                "Password: " + password + "\n";
+        return firstName + " " +
+                lastName + " " +
+                address + " " +
+                email + " " +
+                phoneNumber;
     }
 }

@@ -23,6 +23,7 @@ public class Button {
         this.element.click();
         return this;
     }
+
     public Button safeClick() {
         Actions carActionSequence = new Actions(driver);
         carActionSequence.moveToElement(this.element).click().build().perform();

@@ -1,5 +1,7 @@
 package models;
 
+import generators.BagGenerator;
+
 import static generators.BagGenerator.*;
 
 import java.util.ArrayList;
@@ -29,7 +31,43 @@ public class Bag {
         this.lenght = lenght;
     }
 
-   @Override
+    public String getCategory() {
+        return category;
+    }
+
+    public String getCollection() {
+        return collection;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Boolean getAvaliable() {
+        return avaliable;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public Integer getWidth() {
+        return width;
+    }
+
+    public Integer getLenght() {
+        return lenght;
+    }
+
+    @Override
     public String toString() {
         return "Bag{" +
                 "category=" + category + '\'' +
@@ -43,6 +81,4 @@ public class Bag {
                 ", lenght='" + lenght + '\'' +
                 '}';
     }
-
-
 }

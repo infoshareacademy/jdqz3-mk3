@@ -36,6 +36,13 @@ public class SignInPage extends BasePage {
         this.signInPassword.fillingField(user.getPassword());
     }
 
+    public void notExistingEmail(String email){
+        this.customerEmailAddress.fillingField(email);
+    }
+    public void notExistingPassword(String password){
+        this.signInPassword.fillingField(password);
+    }
+
     public void loginAsRegisteredUser(User user) {
         insertEmail(user);
         insertPassword(user);
@@ -61,5 +68,18 @@ public class SignInPage extends BasePage {
 
     public void createNewAccount(){
         this.newCustomerButton.click();
+    }
+
+    private void insertCustomerEmailAddress(User user){
+        this.customerEmailAddress.fillingField(user.getEmail());
+    }
+    private void insertCustomerPassword(User user){
+        this.signInPassword.fillingField(user.getPassword());
+    }
+    public void insertCustomerDataAndSignIn(User user){
+        insertCustomerEmailAddress(user);
+        insertCustomerPassword(user);
+        clickSignInButton();
+
     }
 }

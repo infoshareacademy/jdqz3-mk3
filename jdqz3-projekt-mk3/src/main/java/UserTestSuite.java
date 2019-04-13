@@ -11,7 +11,6 @@ import test.*;
 @Suite.SuiteClasses({
         RegisteredUserTests.class,
         NotRegisteredUserTests.class,
-        TestPurchase.class
 })
 
 public class UserTestSuite {

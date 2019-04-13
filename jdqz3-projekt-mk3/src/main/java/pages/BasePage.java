@@ -1,5 +1,7 @@
 package pages;
 
+import elements.Button;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -10,6 +12,12 @@ public class BasePage {
     protected WebDriver driver;
     protected String url;
     protected String window;
+
+    private By myUserAccountSelector = By.cssSelector("li.click_menu");
+    private Button myAccountButton;
+
+    private By myAccSelector = By.xpath("//div[contains(@class, 'header-top-left')]//a[text()='My Account']");
+    private Button myAccButton;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -28,5 +36,19 @@ public class BasePage {
 
     public void close() {
         this.driver.quit();
+    }
+
+    private void chooseMyUserAccount(){
+        this.myAccountButton = new Button(driver, myUserAccountSelector);
+        myAccountButton.safeClick();
+    }
+
+    private void chooseMyAccButton(){
+        this.myAccButton = new Button(driver, myAccSelector);
+        myAccButton.clickWithJs();
+    }
+    public void gotToMyAcc(){
+        chooseMyUserAccount();
+        chooseMyAccButton();
     }
 }

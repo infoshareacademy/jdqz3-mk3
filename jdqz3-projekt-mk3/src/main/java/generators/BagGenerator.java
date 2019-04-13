@@ -16,7 +16,6 @@ public class BagGenerator extends RandomGenerator {
     public static Bag vintageBagWithLeatherBands = new Bag("Bags", "Vintage", "Vintage bag with leather bands", true, 68, 1, 19, 27, 4);
 
     public static Bag generateRandomBag() {
-
         List<Bag> bagList = new ArrayList<>();
         bagList.add(vintageExotikCarryBag);
         bagList.add(chicVintageDeVille);
