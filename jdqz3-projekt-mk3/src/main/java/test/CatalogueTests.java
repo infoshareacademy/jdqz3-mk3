@@ -10,8 +10,6 @@ import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.ContactUsPage;
-import pages.HandbagsCataloguePage;
-import pages.MainMenu;
 import pages.MainPage;
 
 import java.io.IOException;

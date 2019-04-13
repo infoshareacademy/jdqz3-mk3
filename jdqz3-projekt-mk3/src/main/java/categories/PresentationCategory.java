@@ -1,4 +1,4 @@
 package categories;
 
-public class PresentationCategory {
+public interface PresentationCategory {
 }
