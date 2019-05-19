@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "8e63e284-f2b8-4ec1-9e15-4da8405cc77d",
+		"name": "TestCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SignInResponseCode",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e63a9d37-b9aa-4f64-b6cc-21caa45e2e98",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://demo.shopizer.com:8080/shop/customer/logon.html?userName=emailemail2@onet.pl&password=password&storeCode=DEFAULT",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"shopizer",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"shop",
+						"customer",
+						"logon.html"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "emailemail2@onet.pl"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						},
+						{
+							"key": "storeCode",
+							"value": "DEFAULT"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignInCorrectLoginPassword",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "308048ff-c319-4165-b1dc-b1534514cae2",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://demo.shopizer.com:8080/shop/customer/logon.html?userName=emailemail2@onet.pl&password=password&storeCode=DEFAULT",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"shopizer",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"shop",
+						"customer",
+						"logon.html"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "emailemail2@onet.pl"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						},
+						{
+							"key": "storeCode",
+							"value": "DEFAULT"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignInIncorrectLoginPassword",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "308048ff-c319-4165-b1dc-b1534514cae2",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://demo.shopizer.com:8080/shop/customer/logon.html?userName=emailemail2@onet.pl&password=password&storeCode=DEFAULT",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"shopizer",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"shop",
+						"customer",
+						"logon.html"
+					],
+					"query": [
+						{
+							"key": "userName",
+							"value": "emailemail2@onet.pl"
+						},
+						{
+							"key": "password",
+							"value": "password"
+						},
+						{
+							"key": "storeCode",
+							"value": "DEFAULT"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
