@@ -1,6 +1,7 @@
 package test;
 
 import categories.CatalogueCategory;
+import categories.FinalPresentationCategory;
 import categories.PresentationCategory;
 import generators.ScreenshotGenerator;
 import models.User;
@@ -38,7 +39,7 @@ public class CatalogueTests{
     @Rule
     public final TestName name = new TestName();
 
-    @Category({CatalogueCategory.class, PresentationCategory.class})
+    @Category({CatalogueCategory.class, PresentationCategory.class, FinalPresentationCategory.class})
     @Test
     public void chooseAllCatalogue() {
         Assert.assertTrue(mainPage.menu.isHandbagpresent());

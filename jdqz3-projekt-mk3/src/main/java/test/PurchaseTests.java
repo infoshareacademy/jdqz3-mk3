@@ -1,5 +1,6 @@
 package test;
 
+import categories.FinalPresentationCategory;
 import categories.PurchaseCategory;
 import generators.ScreenshotGenerator;
 import models.Address;

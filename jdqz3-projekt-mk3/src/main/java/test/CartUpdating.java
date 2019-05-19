@@ -1,6 +1,7 @@
 package test;
 
 import categories.CartCategory;
+import categories.FinalPresentationCategory;
 import categories.PresentationCategory;
 import generators.ScreenshotGenerator;
 import org.junit.*;
@@ -57,7 +58,7 @@ public class CartUpdating {
     }
 
 
-    @Category({CartCategory.class, PresentationCategory.class})
+    @Category({CartCategory.class, PresentationCategory.class, FinalPresentationCategory.class})
     @Test
     public void changeAmount(){
         mainPage.chooseHandbagsCategory();
