@@ -1,4 +1,4 @@
-package test;
+package generators;
 
 import generators.UserGenerator;
 import org.junit.Assert;

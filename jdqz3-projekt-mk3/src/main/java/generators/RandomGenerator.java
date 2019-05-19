@@ -12,7 +12,7 @@ public class RandomGenerator {
     }
     protected  static  int generateRandomNumber(int min, int max){
         Random rand = new Random();
-        return  rand.nextInt(max) + min;
+        return  rand.nextInt(max -min) + min;
     }
     protected  static  String capitalize(String text){
         return StringUtils.capitalize(text);
