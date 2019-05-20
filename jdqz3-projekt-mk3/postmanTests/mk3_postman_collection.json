@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8e63e284-f2b8-4ec1-9e15-4da8405cc77d",
+		"_postman_id": "77cbf74f-dae2-49c0-b397-88870d2c3911",
 		"name": "SignInCollection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -24,6 +24,10 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://demo.shopizer.com:8080/shop/customer/logon.html?userName=emailemail2@onet.pl&password=password&storeCode=DEFAULT",
 					"protocol": "http",
@@ -75,6 +79,10 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://demo.shopizer.com:8080/shop/customer/logon.html?userName=emailemail2@onet.pl&password=password&storeCode=DEFAULT",
 					"protocol": "http",
@@ -127,6 +135,10 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://demo.shopizer.com:8080/shop/customer/logon.html?userName=test&password=test&storeCode=DEFAULT",
 					"protocol": "http",
@@ -154,6 +166,346 @@
 							"key": "storeCode",
 							"value": "DEFAULT"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registration happy path",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d33837e0-ebef-484c-9eb9-26fcda9ea9e2",
+						"exec": [
+							"pm.environment.unset(\"totalQuantityInCar\");\r",
+							"pm.environment.unset(\"subTotalInCart\");\r",
+							"\r",
+							"pm.globals.set(\"firstName\",  Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5));\r",
+							"pm.globals.set(\"lastName\",  Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5));\r",
+							"pm.globals.set(\"stateProvince\", Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10));\r",
+							"pm.globals.set(\"emailAddress\", pm.globals.get(\"firstName\")+'.'+pm.globals.get(\"lastName\")+'@test.com');\r",
+							"pm.globals.set(\"userName\", pm.globals.get(\"emailAddress\"));\r",
+							"pm.globals.set(\"password\",  Math.random().toString(36).replace(/[^a-zA-Z1-9]+/g, '').substr(0, 7));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bc85aeb3-24e2-4f31-93e0-27dba4df135e",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('assert cookie for  sessionid', function () {\r",
+							"    pm.expect(pm.response.cookies.get(\"jsessionid\")).to.be.not.null;\r",
+							"})\r",
+							"\r",
+							"pm.test('assert cookie for  user', function () {\r",
+							"    pm.expect(pm.response.cookies.get(\"user\")).to.be.not.null;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "billing.firstName",
+							"value": "{{firstName}}",
+							"type": "text"
+						},
+						{
+							"key": "billing.lastName",
+							"value": "{{lastName}}",
+							"type": "text"
+						},
+						{
+							"key": "billing.country",
+							"value": "PL",
+							"type": "text"
+						},
+						{
+							"key": "billing.stateProvince",
+							"value": "{{stateProvince}}",
+							"type": "text"
+						},
+						{
+							"key": "emailAddress",
+							"value": "{{emailAddress}}",
+							"type": "text"
+						},
+						{
+							"key": "userName",
+							"value": "{{emailAddress}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						},
+						{
+							"key": "checkPassword",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://demo.shopizer.com:8080/shop/customer/register.html",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"shopizer",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"shop",
+						"customer",
+						"register.html"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register existing user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "506dc221-f50e-47c9-a7cb-c98a6da8a908",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3d18f89-b5e4-4b0a-94a9-c940d756578e",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test('assert cookie for  sessionid', function () {\r",
+							"    pm.expect(pm.response.cookies.get(\"jsessionid\")).to.be.not.null;\r",
+							"})\r",
+							"\r",
+							"pm.test('assert cookie for  user', function () {\r",
+							"    pm.expect(pm.response.cookies.get(\"user\")).to.be.not.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response Message 'User with user name already exists for this store.'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"User with user name already exists for this store.\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "billing.firstName",
+							"value": "{{firstName}}",
+							"type": "text"
+						},
+						{
+							"key": "billing.lastName",
+							"value": "{{lastName}}",
+							"type": "text"
+						},
+						{
+							"key": "billing.country",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "billing.stateProvince",
+							"value": "{{stateProvince}}",
+							"type": "text"
+						},
+						{
+							"key": "emailAddress",
+							"value": "{{emailAddress}}",
+							"type": "text"
+						},
+						{
+							"key": "userName",
+							"value": "{{emailAddress}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						},
+						{
+							"key": "checkPassword",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://demo.shopizer.com:8080/shop/customer/register.html",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"shopizer",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"shop",
+						"customer",
+						"register.html"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register with invalid country",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "506dc221-f50e-47c9-a7cb-c98a6da8a908",
+						"exec": [
+							"pm.environment.unset(\"firstName\");\r",
+							"pm.environment.unset(\"lastName\");\r",
+							"pm.environment.unset(\"stateProvince\");\r",
+							"pm.environment.unset(\"emailAddress\");\r",
+							"pm.environment.unset(\"userName\");\r",
+							"pm.environment.unset(\"password\");\r",
+							"\r",
+							"pm.globals.set(\"firstName\",  Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5));\r",
+							"pm.globals.set(\"lastName\",  Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5));\r",
+							"pm.globals.set(\"stateProvince\", Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 10));\r",
+							"pm.globals.set(\"emailAddress\", pm.globals.get(\"firstName\")+'.'+pm.globals.get(\"lastName\")+'@test.com');\r",
+							"pm.globals.set(\"userName\", pm.globals.get(\"emailAddress\"));\r",
+							"pm.globals.set(\"password\",  Math.random().toString(36).replace(/[^a-zA-Z1-9]+/g, '').substr(0, 7));\r",
+							"pm.globals.set(\"password2\",  Math.random().toString(36).replace(/[^a-zA-Z1-9]+/g, '').substr(0, 7));"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3d18f89-b5e4-4b0a-94a9-c940d756578e",
+						"exec": [
+							"pm.test(\"Response Message 'Country is required'\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Country is required\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "billing.firstName",
+							"value": "{{firstName}}",
+							"type": "text"
+						},
+						{
+							"key": "billing.lastName",
+							"value": "{{lastName}}",
+							"type": "text"
+						},
+						{
+							"key": "billing.country",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "billing.stateProvince",
+							"value": "{{stateProvince}}",
+							"type": "text"
+						},
+						{
+							"key": "emailAddress",
+							"value": "{{emailAddress}}",
+							"type": "text"
+						},
+						{
+							"key": "userName",
+							"value": "{{emailAddress}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						},
+						{
+							"key": "checkPassword",
+							"value": "{{password}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://demo.shopizer.com:8080/shop/customer/register.html",
+					"protocol": "http",
+					"host": [
+						"demo",
+						"shopizer",
+						"com"
+					],
+					"port": "8080",
+					"path": [
+						"shop",
+						"customer",
+						"register.html"
 					]
 				}
 			},
