@@ -1,5 +1,6 @@
 package test;
 
+import categories.FinalPresentationCategory;
 import categories.PresentationCategory;
 import categories.UserCategory;
 import generators.ScreenshotGenerator;
@@ -57,7 +58,7 @@ public class RegisteredUserTests {
         Assert.assertEquals(user.getFirstName(), signInPage.getRegisteredUserFirstName());
     }
 
-    @Category({UserCategory.class, PresentationCategory.class})
+    @Category({UserCategory.class, PresentationCategory.class, FinalPresentationCategory.class})
     @Test
     public void isRegisteredUserLoggedOut() {
         mainPage.logout();
@@ -79,7 +80,7 @@ public class RegisteredUserTests {
         Assert.assertNotEquals("Invalid password", changePasswordPage.readPasswordMessage());
     }
 
-    @Category({UserCategory.class, PresentationCategory.class})
+    @Category({UserCategory.class, PresentationCategory.class, FinalPresentationCategory.class})
     @Test
     public void isEmptyPasswordNotAccepted() {
         AccountPage accountPage = new AccountPage(driver);
@@ -99,7 +100,7 @@ public class RegisteredUserTests {
         Assert.assertNotEquals("Invalid password", changePasswordPage.readPasswordMessage());
     }
 
-    @Category({UserCategory.class, PresentationCategory.class})
+    @Category({UserCategory.class, PresentationCategory.class, FinalPresentationCategory.class})
     @Test
     public void isShippingAddressAdded() {
         AccountPage accountPage = new AccountPage(driver);

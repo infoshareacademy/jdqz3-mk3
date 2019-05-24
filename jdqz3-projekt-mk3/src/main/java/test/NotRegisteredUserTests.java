@@ -1,5 +1,6 @@
 package test;
 
+import categories.FinalPresentationCategory;
 import categories.PresentationCategory;
 import categories.UserCategory;
 import generators.ScreenshotGenerator;
@@ -43,7 +44,7 @@ public class NotRegisteredUserTests {
     @Rule
     public final TestName name = new TestName();
 
-    @Category({UserCategory.class, PresentationCategory.class})
+    @Category({UserCategory.class, PresentationCategory.class, FinalPresentationCategory.class})
     @Test
     public void signInWithoutCredentials() {
         mainPage.enterSignInPage();
